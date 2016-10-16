@@ -1,0 +1,54 @@
+<div class="container container-sm animated fadeInDown">
+   <div class="center-block mt-xl">
+      <!-- START panel-->
+      <!--<img src="app/img/logo-gray.png" alt="Image" class="center-block img-rounded" />-->
+      <h1>&nbsp;</h1>
+      <div class="panel">
+         <div class="panel-body">
+            <p class="pv text-bold">乌鲁木齐市教育招生考试中心</p>
+            <form role="form" class="mb-lg">
+               <div class="row">
+                  <div class="col-md-6 col-md-offset-3">
+                     <div class="form-group has-feedback">
+                        <input id="signupInputEmail1" type="text" placeholder="身份证号" autocomplete="off" class="form-control" />
+                        <span class="fa fa-user form-control-feedback text-muted"></span>
+                     </div>
+                     <div class="form-group has-feedback">
+                        <input id="signupInputPassword1" type="password" placeholder="密码" autocomplete="off" class="form-control" />
+                        <span class="fa fa-lock form-control-feedback text-muted"></span>
+                     </div>
+                     <div class="form-group has-feedback">
+                        <input id="signupInputRePassword1" type="password" placeholder="确认密码" autocomplete="off" class="form-control" />
+                        <span class="fa fa-lock form-control-feedback text-muted"></span>
+                     </div>
+                     <div class="clearfix">
+                        <div class="checkbox c-checkbox pull-left mt0">
+                           <label>
+                              <input type="checkbox" value="" />
+                              <span class="fa fa-check"></span>我同意 <a href="">《考生须知》</a>
+                           </label>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6 col-md-offset-3">
+                     <button type="submit" class="btn btn-block btn-primary">注册</button>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6 col-md-offset-3">
+                     <br/>
+                     <!--<p class="pt-lg text-center mt-sm">已注册考生直接登录</p>-->
+                     <a ui-sref="login.login" class="btn btn-block btn-warning">
+                        已注册考生点此登录
+                     </a>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+      <!-- END panel-->
+      <div ng-include="'app/login/login.footer.html'" class="p-lg text-center"></div>
+   </div>
+</div>

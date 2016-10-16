@@ -1,0 +1,99 @@
+<div class="app-view-header">数采仪管理
+   <small>修改数采仪信息、修改、删除、新增通道设备</small>
+</div>
+<div class="row">
+   <div class="col-md-12">
+      <form ng-submit="devEditCtrl.mysubmit()" name="formv" class="form-validate form-horizontal">
+         <!-- START panel-->
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               <div class="panel-title">数采仪信息</div>
+            </div>
+            <div class="panel-body">
+               <fieldset>
+                  <div class="form-group" ng-show="devEditCtrl.addOrEdit=='E'">
+                     <label class="col-sm-2 control-label">数采仪编号</label>
+                     <div class="col-sm-6">
+                        {{devEditCtrl.rawdevice.devIndex}}
+                     </div>
+                     <div class="col-sm-4">
+                        <code></code>
+                     </div>
+                  </div>
+               </fieldset>
+               <fieldset>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">数采仪名称</label>
+                     <div class="col-sm-6">
+                        <input type="text" placeholder="请输入数采仪名称" required="" ng-model="devEditCtrl.rawdevice.devName" class="form-control" />
+                     </div>
+                     <div class="col-sm-4">
+                        <code>必填</code>
+                     </div>
+                  </div>
+               </fieldset>
+               <fieldset>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">说明</label>
+                     <div class="col-sm-6">
+                        <input type="text" placeholder="请输入数采仪说明" required="" ng-model="devEditCtrl.rawdevice.devDesc" class="form-control" />
+                     </div>
+                     <div class="col-sm-4">
+                        <code>必填</code>
+                     </div>
+                  </div>
+               </fieldset>
+               <fieldset>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">位置描述</label>
+                     <div class="col-sm-6">
+                        <input type="text" placeholder="请输入数采仪位置描述" required="" ng-model="devEditCtrl.rawdevice.devLocate" class="form-control" />
+                     </div>
+                     <div class="col-sm-4">
+                        <code>必填</code>
+                     </div>
+                  </div>
+               </fieldset>
+               <fieldset ng-repeat="channelDev in devEditCtrl.rawdevice.channelDevList">
+                  <div class="form-group">
+                     <label class="col-sm-2 col-md-2 control-label">通道{{channelDev.devIndex}}</label>
+                     <div class="col-md-8 col-sm-8">
+                        <ui-select ng-model="channelDev.selectedField" theme="bootstrap">
+                           <ui-select-match placeholder="选择所属园地...">{{$select.selected.fieldName}}</ui-select-match>
+                           <ui-select-choices repeat="field in devEditCtrl.fields">
+                              <div ng-bind-html="field.fieldName | highlight: $select.search"></div>
+                              <small>{{field.name}}
+                              </small>
+                           </ui-select-choices>
+                        </ui-select>
+                        <ui-select  ng-model="channelDev.selectedDevType" theme="bootstrap">
+                           <ui-select-match placeholder="选择设备类型...">{{$select.selected.devTypeName + '(' + $select.selected.paramName + ')'}}</ui-select-match>
+                           <ui-select-choices repeat="devType in devEditCtrl.devTypes">
+                              <div ng-bind-html="devType.devTypeName | highlight: $select.search"></div>
+                              <small>{{devType.devTypeName + devType.paramName}}
+                              </small>
+                           </ui-select-choices>
+                        </ui-select>
+                     </div>
+                     <div class="col-sm-2">
+                        <code></code>
+                     </div>
+                  </div>
+               </fieldset>
+               <div class="col-md-3 col-md-offset-1">
+                  <button type="submit" class="mr mb-sm btn btn-block btn-warning">
+                     <strong>保存</strong>
+                  </button>
+               </div>
+
+               <div class="col-md-3 col-md-offset-1">
+                  <a ui-sref="app.dev.list" class="mr mb-sm btn btn-block btn-danger">
+                     <strong>返回</strong>
+                  </a>
+               </div>
+         </div>
+         <!-- END panel-->
+      </form>
+   </div>
+</div>
+<!-- END row-->

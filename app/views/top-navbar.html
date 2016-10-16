@@ -1,0 +1,41 @@
+<!-- START Top Navbar-->
+<nav role="navigation" ng-controller="HeaderNavController as header" class="navbar topnavbar">
+   <!-- START button offset-->
+   <!-- hide search -->
+   <div class="btn-offset">
+      <button type="button" btn-layer-morph="" ripple="" class="btn btn-warning btn-lg shadow-z1" ng-click="header.logout()">
+         登出
+      </button>
+   </div>
+   <!-- START button offset-->
+   <!-- START navbar header-->
+   <div class="navbar-header">
+      <a ui-sref="app.dashboard" class="navbar-brand">
+         <img src="app/img/logo.png" alt="App Logo" class="brand-logo" />
+      </a>
+      <!-- Mobile buttons-->
+      <div class="mobile-toggles">
+         <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
+         <a href="" ng-click="app.sidebar.isOffscreen = !app.sidebar.isOffscreen" class="sidebar-toggle">
+            <em class="fa fa-navicon"></em>
+         </a>
+      </div>
+   </div>
+   <!-- END navbar header-->
+   <!-- START Nav wrapper-->
+   <div uib-collapse="header.headerMenuCollapsed" class="nav-wrapper collapse navbar-collapse">
+      <!-- START Left navbar-->
+      <ul class="nav navbar-nav hidden-material">
+         <li>
+            <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
+            <a href="" ng-click="app.sidebar.isOffscreen = !app.sidebar.isOffscreen" class="hidden-xs">
+               <em ng-class="app.sidebar.isOffscreen ? 'fa-caret-right':'fa-caret-left'" class="fa"></em>
+            </a>
+         </li>
+      </ul>
+      <!-- END Left navbar-->
+   </div>
+   <!-- END Nav wrapper-->
+
+</nav>
+<!-- END Top Navbar-->

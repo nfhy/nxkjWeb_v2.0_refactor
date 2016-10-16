@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]>    <html class="ie9" lang="en" ng-app="naut"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" ng-app="naut">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="{{app.description}}">
+    <meta name="keywords" content="app, responsive, angular, bootstrap, dashboard, admin">
+    <title data-ng-bind="pageTitle()"></title>
+    <!-- build:css app/css/application.css-->
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link id="mainstyles" rel="stylesheet" href="app/css/styles.css">
+    <!-- endbuild-->
+</head>
+
+<body ng-cloak="" ng-class="{ 'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed, 'layout-dock' : app.layout.isDocked, 'layout-material': app.layout.isMaterial, 'aside-offscreen' : app.sidebar.isOffscreen, 'aside-mini' : app.sidebar.isMini, 'aside-right' : app.sidebar.isRight, 'footer-hidden': app.footer.hidden, 'in-app': !$state.includes('page')}">
+<div data-ui-view="" data-autoscroll="false" ng-controller="CoreController" class="app-container">
+</div>
+<!--
+<div class="layer-morph-container bg-info">
+   <div class="layer-morph-wrapper">
+      <div id="layer-search" ng-include="'templates/layer-search.html'" class="layer-morph"></div>
+      <div class="layer-morph-footer">Naut</div>
+   </div>
+</div>-->
+<!-- End Layer Morph-->
+<!-- build:vendor app/js/vendor.js-->
+<script src="vendor/modernizr/modernizr.custom.js"></script>
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-route/angular-route.min.js"></script>
+<script src="vendor/angular-animate/angular-animate.min.js"></script>
+<script src="vendor/angular-touch/angular-touch.min.js"></script>
+<script src="vendor/ngstorage/ngStorage.min.js"></script>
+
+<script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="vendor/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="vendor/angular-promise-tracker-master/promise-tracker.js"></script>
+<script src="vendor/angular-promise-tracker-master/promise-tracker-http-interceptor.js"></script>
+<!-- echarts -->
+<script src="vendor/eCharts/echarts.common.min.js"></script>
+<!-- endbuild-->
+<!-- build:js app/js/application.js-->
+<script src="app/app.module.js"></script>
+<script src="app/modules/common/directives/animate-enabled.directive.js"></script>
+<script src="app/modules/common/directives/chained-animation.directive.js"></script>
+<script src="app/modules/common/directives/check-all-table.directive.js"></script>
+<script src="app/modules/common/directives/fullscreen.directive.js"></script>
+<script src="app/modules/common/directives/reset-key.directive.js"></script>
+<script src="app/modules/common/filters/title-case.filter.js"></script>
+<script src="app/modules/common/services/browser-detection.service.js"></script>
+<script src="app/modules/common/services/support.service.js"></script>
+<script src="app/modules/common/services/touch-drag.service.js"></script>
+<script src="app/modules/core/config.js"></script>
+<script src="app/modules/core/constants.js"></script>
+<script src="app/modules/core/core.controller.js"></script>
+<script src="app/modules/core/core.run.js"></script>
+<script src="app/modules/icons/climacon.directive.js"></script>
+<script src="app/modules/routes/routes.config.js"></script>
+<script src="app/modules/routes/routes.provider.js"></script>
+<script src="app/modules/routes/routes.run.js"></script>
+<script src="app/modules/routes/vendor.constants.js"></script>
+<script src="app/modules/settings/settings.controller.js"></script>
+<script src="app/modules/settings/settings.service.js"></script>
+<!--my js script-->
+<script src="app/commonTool.js"></script>
+<script src="app/modules/http/http.service.js"></script>
+
+<script src="app/modules/data/data.service.js"></script>
+<script src="app/modules/data/data.factory.js"></script>
+
+<script src="app/page/page.input.directive.js"></script>
+<script src="app/page/page-load.controller.js"></script>
+
+<script src="app/adminUser/auser-list.controller.js"></script>
+<script src="app/adminUser/auser-edit.controller.js"></script>
+
+<script src="app/field/field-list.controller.js"></script>
+<script src="app/field/field-edit.controller.js"></script>
+
+<script src="app/dev/dev-edit.controller.js"></script>
+<script src="app/dev/dev-list.controller.js"></script>
+<script src="app/devMonitor/dev-monitor.controller.js"></script>
+
+<script src="app/login/login-login.controller.js"></script>
+
+<script src="app/devChart/dev.chart.controller.js"></script>
+<script src="app/devChart/dev.chart.setting.controller.js"></script>
+<script src="app/devChart/echart+angular.directive.js"></script>
+
+<script src="app/layout/header-nav.controller.js"></script>
+<script src="app/layout/ui-sidebar.directive.js"></script>
+</body>
+
+</html>

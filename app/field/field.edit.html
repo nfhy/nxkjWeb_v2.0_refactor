@@ -1,0 +1,69 @@
+<div class="app-view-header">园地维护
+   <small>修改、删除、新增园地</small>
+</div>
+<!-- START row-->
+<div class="row">
+   <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+   <div class="col-md-12">
+      <form ng-submit="fieldEditCtrl.mysubmit()" name="fieldEditForm" class="form-validate form-horizontal">
+         <!-- START panel-->
+         <div class="panel panel-default">
+            <div class="panel-heading">
+               <div class="panel-title">园地信息</div>
+            </div>
+            <div class="panel-body">
+               <fieldset>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">园地名</label>
+                     <div class="col-sm-6">
+                        <input type="text" placeholder="请输入园地名" required="" ng-model="fieldEditCtrl.field.fieldName" class="form-control" />
+                     </div>
+                     <div class="col-sm-4">
+                        <code>必填</code>
+                     </div>
+                  </div>
+               </fieldset>
+               <fieldset>
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">园地描述</label>
+                     <div class="col-sm-6">
+                        <input type="text" placeholder="请输入园地描述" required="" ng-model="fieldEditCtrl.field.fieldDesc" class="form-control" />
+                     </div>
+                     <div class="col-sm-4">
+                        <code>必填</code>
+                     </div>
+                  </div>
+               </fieldset>
+
+               <fieldset ng-repeat="devInfo in fieldEditCtrl.devList">
+                  <div class="form-group">
+                     <label class="col-sm-2 control-label">{{devInfo.devName}}</label>
+                     <div class="col-sm-6">
+                        <slider ng-model="devInfo.min" ng-model-range="devInfo.max"
+                                precision="2"
+                                step-width="0.01"
+                                floor="{{devInfo.xmin}}" ceiling="{{devInfo.xmax}}"></slider>
+                     </div>
+                     <div class="col-sm-4">
+                        <code>{{devInfo.min}}~{{devInfo.max}} {{devInfo.paramName}}</code>
+                     </div>
+                  </div>
+               </fieldset>
+
+               <div class="col-md-3 col-md-offset-1">
+                  <button type="submit" ng-disabled="fieldEditForm.$invalid" class="mr mb-sm btn btn-block btn-warning">
+                     <strong>保存</strong>
+                  </button>
+               </div>
+
+               <div class="col-md-3 col-md-offset-1">
+                  <a ui-sref="app.field.list" class="mr mb-sm btn btn-block btn-danger">
+                     <strong>返回</strong>
+                  </a>
+               </div>
+         </div>
+         <!-- END panel-->
+      </form>
+   </div>
+</div>
+<!-- END row-->

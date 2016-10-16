@@ -1,0 +1,52 @@
+<!-- START Sidebar-->
+<div class="sidebar-wrapper">
+   <div ui-sidebar="" class="sidebar">
+      <div class="sidebar-nav">
+         <ul class="nav">
+            <li class="nav-heading">
+               <span class="text-muted">菜单栏</span>
+            </li>
+            <!-- 用户信息，用户密码修改
+            <li ui-sref-active="active">
+               <a ui-sref="app.user.info" title="用户信息" ripple="">
+                  <em class="sidebar-item-icon fa fa-user"></em>
+                  <span >用户信息</span>
+               </a>
+            </li>
+            -->
+            <!-- 管理员维护
+            <li ui-sref-active="active">
+               <a ui-sref="app.admin.list" title="管理员" ripple="">
+                  <em class="sidebar-item-icon fa fa-users"></em>
+                  <span >管理员维护</span>
+               </a>
+            </li>-->
+            <!-- 用户维护 -->
+            <li ui-sref-active="active" ng-hide="role!=3">
+               <a ui-sref="app.auser.list" title="用户" ripple="">
+                  <em class="sidebar-item-icon fa fa-user"></em>
+                  <span >用户维护</span>
+               </a>
+            </li>
+            <li ui-sref-active="active">
+               <a ui-sref="app.dev.list" title="设备维护" ripple="">
+                  <em class="sidebar-item-icon fa fa-cogs"></em>
+                  <span >设备维护</span>
+               </a>
+            </li>
+            <li ui-sref-active="active">
+               <a ui-sref="app.field.list" title="园地维护" ripple="">
+                  <em class="sidebar-item-icon fa fa-cogs"></em>
+                  <span >园地维护</span>
+               </a>
+            </li>
+            <!-- Iterates over all sidebar items
+            <li class="nav-heading">
+               <span translate="sidebar.heading.HEADER" class="text-muted">Main Navigation</span>
+            </li>
+            -->
+         </ul>
+      </div>
+   </div>
+</div>
+<!-- END Sidebar-->

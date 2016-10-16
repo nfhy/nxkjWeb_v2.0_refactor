@@ -1,0 +1,45 @@
+<div class="app-view-header">设备监测
+    <small>查看通道设备读数</small>
+</div>
+<div class="container-fluid">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <table ng-table="devMonitorCtrl.tableParams" class="table  table-bordered table-striped" show-filter="true">
+        <colgroup>
+            <col width="20%" />
+            <col width="15%" />
+            <col width="15%" />
+            <col width="10%" />
+            <col width="15%" />
+            <col width="15%" />
+            <col width="10%" />
+        </colgroup>
+        <tr ng-repeat="dataToShow in $data">
+            <td title="'园地'" sortable="'fieldName'" filter="{'fieldName' : 'text'}">
+                {{dataToShow.fieldName}}
+            </td>
+            <td title="'数采仪编号'" sortable="'parentDevIndex'" filter="{'parentDevIndex' : 'text'}">
+                {{dataToShow.parentDevIndex}}
+            </td>
+            <td title="'设备编号'" sortable="'devIndex'" filter="{'devIndex' : 'text'}">
+                {{dataToShow.devIndex}}
+            </td>
+            <td title="'设备类型'" sortable="'devTypeName'" filter="{'devTypeName' : 'text'}">
+                {{dataToShow.devTypeName}}
+            </td>
+            <td title="'读数'" sortable="'val'">
+                <span ng-if="dataToShow.warn" class="bg-danger">{{dataToShow.val}}</span>
+                <span ng-if="!dataToShow.warn" class="bg-success">{{dataToShow.val}}</span>
+            </td>
+            <td title="'日期'" sortable="'time'">
+                {{dataToShow.time}}
+            </td>
+            <td title="'操作'">
+                <div ng-show="!rowform.$visible" class="buttons">
+                    <button ng-click="devMonitorCtrl.showChart(dataToShow)" class="btn btn-sm btn-info">
+                        <em class="fa fa-bar-chart-o"></em>
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

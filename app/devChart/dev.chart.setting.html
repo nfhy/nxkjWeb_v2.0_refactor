@@ -1,0 +1,112 @@
+<div class="app-view-header">历史数据设置
+    <small>历史数据日期、类型选择</small>
+</div>
+<!-- START row-->
+<div class="row">
+    <div class="col-md-12">
+        <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+        <form ng-submit="chartSettingCtrl.generateChart()" name="chartSettingForm" class="form-validate form-horizontal">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">历史数据设置</div>
+                </div>
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">数据时间间隔</label>
+                            <div class="col-sm-4">
+                                <div class="radio-inline c-radio">
+                                    <label>
+                                        <input id="inlineradio1" type="radio" name="i-radio" value="1" ng-change="chartSettingCtrl.spaceChange()" ng-model="chartSettingCtrl.space"/>
+                                        <span class="fa fa-circle"></span>每分钟</label>
+                                </div>
+                                <div class="radio-inline c-radio">
+                                    <label>
+                                        <input id="inlineradio2" type="radio" name="i-radio" value="2" ng-change="chartSettingCtrl.spaceChange()" ng-model="chartSettingCtrl.space"/>
+                                        <span class="fa fa-circle"></span>每小时</label>
+                                </div>
+                                <div class="radio-inline c-radio">
+                                    <label>
+                                        <input id="inlineradio3" type="radio" name="i-radio" value="3" ng-change="chartSettingCtrl.spaceChange()" ng-model="chartSettingCtrl.space"/>
+                                        <span class="fa fa-circle"></span>每天</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <code>{{chartSettingCtrl.spaceMsg}}</code>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset ng-show="chartSettingCtrl.space">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">开始时间</label>
+                            <div class="col-sm-5">
+                                <p class="input-group">
+                                    <input type="text" uib-datepicker-popup="{{chartSettingCtrl.format}}" ng-model="chartSettingCtrl.dt1" ng-change="chartSettingCtrl.dt1Change()"
+                                           is-open="chartSettingCtrl.opened1" min-date="false" max-date="false"
+                                           uib-datepicker-options="chartSettingCtrl.dateOptions" date-disabled="chartSettingCtrl.disabled(form.date, form.mode)"
+                                           close-text="关闭" clear-text="清空" current-text="今天" class="form-control"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" ng-click="chartSettingCtrl.open1($event)" class="btn btn-default">
+                                            <em class="fa fa-calendar"></em>
+                                        </button>
+                                    </span>
+                                </p>
+                                <uib-timepicker ng-model="chartSettingCtrl.mytime1"
+                                                ng-change="chartSettingCtrl.time1Change()" hour-step="1" minute-step="15" show-meridian="chartSettingCtrl.ismeridian"></uib-timepicker>
+                            </div>
+                            <div class="col-sm-5">
+                                <h4>{{chartSettingCtrl.dt1str}}</h4>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset ng-show="chartSettingCtrl.space=='2'||chartSettingCtrl.space=='3'">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">截止时间</label>
+                            <div class="col-sm-5">
+                                <p class="input-group">
+                                    <input type="text" uib-datepicker-popup="{{chartSettingCtrl.format}}" ng-model="chartSettingCtrl.dt2" ng-change="chartSettingCtrl.dt2Change()"
+                                           is-open="chartSettingCtrl.opened2" min-date="false" max-date="false"
+                                           uib-datepicker-options="chartSettingCtrl.dateOptions" date-disabled="chartSettingCtrl.disabled(form.date, form.mode)"
+                                           close-text="关闭" clear-text="清空" current-text="今天" class="form-control"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" ng-click="chartSettingCtrl.open2($event)" class="btn btn-default">
+                                            <em class="fa fa-calendar"></em>
+                                        </button>
+                                    </span>
+                                </p>
+                                <uib-timepicker ng-model="chartSettingCtrl.mytime2"
+                                                ng-change="chartSettingCtrl.time2Change()" hour-step="1" minute-step="15" show-meridian="chartSettingCtrl.ismeridian"></uib-timepicker>
+                            </div>
+                            <div class="col-sm-5">
+                                <h4>{{chartSettingCtrl.dt2str}}</h4>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset ng-hide="chartSettingCtrl.settingMsgStr.length==0">
+                        <div class="col-md-10 col-md-offset-1">
+                            <h5><strong> 当前设置：<br/><br/>
+                                {{chartSettingCtrl.settingMsgStr}}{{chartSettingCtrl.settingMsgStr.length}}<br/><br/>
+                                点击生成折线图按钮查看折线图
+                                <br/><br/>
+                            </strong>
+                            </h5>
+                        </div>
+                    </fieldset>
+                    <div class="col-md-3 col-md-offset-1">
+                        <button type="submit" ng-disabled="chartSettingCtrl.settingMsgStr.length==0" class="mr mb-sm btn btn-block btn-warning">
+                            <strong>生成折线图</strong>
+                        </button>
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-1">
+                        <a ui-sref="app.field.list" class="mr mb-sm btn btn-block btn-danger">
+                            <strong>返回</strong>
+                        </a>
+                    </div>
+                </div>
+                <!-- END panel-->
+        </form>
+    </div>
+</div>
+<!-- END row-->

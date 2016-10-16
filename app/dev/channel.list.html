@@ -1,0 +1,32 @@
+<div class="app-view-header">设备维护
+   <small>修改、新增设备</small>
+</div>
+<div class="container-fluid">
+
+   <table ng-table="deviceListCtrl.tableParams" class="table  table-bordered table-striped" show-filter="true">
+      <tr ng-repeat="mydevice in $data">
+         <td title="'编号'" sortable="'mydeviceIndex'">
+            {{mydevice.mydeviceIndex}}
+         </td>
+         <td title="'设备名称'" filter="{ 'mydeviceName' : 'text'}" sortable="'mydeviceName'">
+            {{mydevice.mydeviceName}}
+         </td>
+         <td title="'说明'" filter="{ 'mydeviceDesc' : 'text'}" >
+            {{mydevice.mydeviceDesc}}
+         </td>
+         <td title="'操作'">
+            <div ng-show="!rowform.$visible" class="buttons">
+               <button ng-click="deviceListCtrl.editMydevice(mydevice)" class="btn btn-sm btn-info">
+                  <em class="fa fa-pencil"></em>
+               </button>
+               <!--<button ng-click="deviceListCtrl.removeMydevice(mydevice)" title="Delete" class="btn btn-sm btn-danger">
+                  <em class="fa fa-trash"></em>
+               </button>-->
+            </div>
+         </td>
+      </tr>
+   </table>
+
+   <a class="btn btn-info" ui-sref="app.device.edit">新增设备</a>
+
+</div>

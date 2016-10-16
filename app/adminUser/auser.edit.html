@@ -1,0 +1,80 @@
+<div class="app-view-header">用户维护
+    <small>修改、删除、新增用户</small>
+</div>
+<!-- START row-->
+<div class="row">
+    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+    <div class="col-md-12">
+        <form ng-submit="userEditCtrl.mysubmit()" name="fieldEditForm" class="form-validate form-horizontal">
+            <!-- START panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">用户信息</div>
+                </div>
+                <div class="panel-body">
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-6">
+                                <input type="text" placeholder="请输入用户名" required="" ng-disabled="userEditCtrl.addOrEdit=='E'" ng-model="userEditCtrl.auser.userName" class="form-control" />
+                            </div>
+                            <div class="col-sm-4">
+                                <code>必填</code>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">昵称</label>
+                            <div class="col-sm-6">
+                                <input type="text" placeholder="请输入用户昵称" required="" ng-model="userEditCtrl.auser.nickName" class="form-control" />
+                            </div>
+                            <div class="col-sm-4">
+                                <code>必填</code>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">电话</label>
+                            <div class="col-sm-6">
+                                <input type="text" placeholder="请输入用户电话" required="" ng-model="userEditCtrl.auser.tel" class="form-control" />
+                            </div>
+                            <div class="col-sm-4">
+                                <code>必填</code>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">园地关联</label>
+                            <div class="col-sm-6">
+                                <ui-select multiple="" ng-model="userEditCtrl.selectedFields" theme="bootstrap">
+                                    <ui-select-match placeholder="选择关联园地">{{$item.fieldName}}</ui-select-match>
+                                    <ui-select-choices repeat="field in userEditCtrl.fields">{{field.fieldName}}</ui-select-choices>
+                                </ui-select>
+                            </div>
+                            <div class="col-sm-4">
+                                <code></code>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="col-md-3 col-md-offset-1">
+                        <button type="submit" ng-disabled="fieldEditForm.$invalid" class="mr mb-sm btn btn-block btn-warning">
+                            <strong>保存</strong>
+                        </button>
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-1">
+                        <a ui-sref="app.auser.list" class="mr mb-sm btn btn-block btn-danger">
+                            <strong>返回</strong>
+                        </a>
+                    </div>
+                </div>
+                <!-- END panel-->
+        </form>
+    </div>
+</div>
+<!-- END row-->
