@@ -13,11 +13,6 @@
         var vm = this;
 
         vm.userInfo = localData.get('user_info');
-        if (!vm.userInfo) {
-            alert('会话过期，请重新登录...');
-            $state.go('login.login');
-            return;
-        }
         vm.channelDevIndex = parseInt($stateParams['channelDevIndex']);
         vm.space = '';
         vm.dt1str = new Date().Format('yyyy-MM-dd hh:mm:ss');
@@ -31,7 +26,6 @@
                 'space' : vm.space
             }
             localData.set('chartSetting', chartSetting);
-            $rootScope.pendPromise('generate-chart');
             $state.go('app.dev.chart');
         }
         //space

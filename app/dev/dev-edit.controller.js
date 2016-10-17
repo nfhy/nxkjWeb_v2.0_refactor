@@ -10,17 +10,11 @@
         .module('naut')
         .controller('DevEditController', DeviceEditController);
     /* @ngInject */
-    DeviceEditController.$inject = ['$rootScope', '$state', 'myHttp', 'localData', '$stateParams', 'toaster'];
-    function DeviceEditController($rootScope, $state, myHttp, localData, $stateParams, toaster) {
+    DeviceEditController.$inject = ['$rootScope', '$state', 'myHttp', 'localData', '$stateParams', 'sAlert'];
+    function DeviceEditController($rootScope, $state, myHttp, localData, $stateParams, sAlert) {
         var vm = this;
         vm.dev = {};
         vm.userInfo = localData.get('user_info');
-        if (!vm.userInfo) {
-            alert('会话过期，请重新登录...');
-            $rootScope.initResolve();
-            $state.go('login.login');
-            return;
-        }
         var devIndex = parseInt($stateParams['devIndex']);
         vm.addOrEdit = devIndex == -1?'A':'E';
         if (vm.addOrEdit == 'A') {
@@ -34,7 +28,6 @@
                 return;
             }
             _handleData();
-            $rootScope.pendResolve('init-edit-device', toaster, 'success', '', '加载完毕');
         }
 
         vm.mysubmit = _submit;
@@ -87,7 +80,6 @@
         }
 
         function _submit() {
-            $rootScope.pendPromise('finish-edit-dev');
             if (vm.addOrEdit == 'A') {
                 _addSubmit();
             }
@@ -109,7 +101,7 @@
             var postData = {'msg' : 'devMgr', 'data' : {'token' : vm.userInfo.token,'userName' : vm.userInfo.username, 'cmd' : 1, 'detail' : detail}};
             var promise = myHttp.post(postData);
             if (promise) {
-                myHttp.handlePromise(promise, _onsuccess, _onerror);
+                myHttp.handlePromise(promise, _onsuccess);
             }
         }
         //{"msg":"devMgr",
@@ -151,13 +143,9 @@
         }
 
         function _onsuccess() {
-            console.log('post success');
-            $state.go('app.dev.list');
-        }
-
-        function _onerror(data) {
-            console.log('error');
-            $rootScope.pendResolve('finish-edit-dev', toaster, 'error', '', '提交修改失败：'+data);
+            sAlert.success('保存成功', '').then(function() {
+                $state.go('app.dev.list');
+            });
         }
     }
 })();

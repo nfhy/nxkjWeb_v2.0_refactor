@@ -13,7 +13,6 @@
         }
         function _get(key) {
             var val = $window.localStorage[key];
-            console.log(key, val);
             return val?JSON.parse(val) : {};
         }
         function _flush() {
@@ -70,6 +69,13 @@
                 }
             }
         }
+        function checkUserInfo() {
+            var userInfo = _get('user_info');
+            if (userInfo && userInfo.token) {
+                return userInfo;
+            }
+            return undefined;
+        }
         return {
             set: _set,
             get: _get,
@@ -79,7 +85,8 @@
             getFieldByFieldIndex : getFieldByFieldIndex,
             getRawdeviceByDevIndex : getRawdeviceByDevIndex,
             getMyDeviceByDevIndex : getMyDeviceByDevIndex,
-            getAuserByUsername : getAuserByUsername
+            getAuserByUsername : getAuserByUsername,
+            checkUserInfo : checkUserInfo
         }
     }
 

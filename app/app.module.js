@@ -10,16 +10,12 @@
 
 angular
     .module('naut', [
-      'ngRoute',
-      'ngAnimate',
-      'ngStorage',
-      //'ngCookies',
-      //'ngSanitize',
-      //'ngResource',
-      'ui.bootstrap',
-      'ui.router',
-      //'ui.utils',
-      'oc.lazyLoad',
-      //'cfp.loadingBar',
-      'ajoslin.promise-tracker'
+        'ngRoute',
+        'ngAnimate',
+        'ngStorage',
+        'ui.bootstrap',
+        'ui.router',
+        'oc.lazyLoad',
+        'ng-sweet-alert',
+        'cgBusy'
     ]);

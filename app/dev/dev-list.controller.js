@@ -8,18 +8,12 @@
         .module('naut')
         .controller('DevListController', DeviceListController);
     /* @ngInject */
-    DeviceListController.$inject = ['$rootScope', 'NgTableParams', '$filter', '$state', 'myHttp', 'localData', 'toaster'];
-    function DeviceListController($rootScope, NgTableParams, $filter, $state, myHttp, localData, toaster) {
+    DeviceListController.$inject = ['$rootScope', 'NgTableParams', '$state', 'myHttp', 'localData'];
+    function DeviceListController($rootScope, NgTableParams, $state, myHttp, localData) {
         var vm = this;
         vm.mydevices = [];//设备列表
 
         vm.userInfo = localData.get('user_info');
-        if (!vm.userInfo) {
-            alert('会话过期，请重新登录...');
-            $rootScope.initResolve();
-            $state.go('login.login');
-            return;
-        }
         //加载数采仪信息
         vm.loadDevices = _loadDevices;
         vm.editDevice = _editDevice;
@@ -47,34 +41,19 @@
         function _loadDevices() {
             var data = {'msg' : 'webDeviceList' ,
                 'data' : {'userName' : vm.userInfo.username, 'token' : vm.userInfo.token}};
-            $rootScope.pendPromise('load-devices');
             var promise = myHttp.post(data);
             if(promise) {
-                myHttp.handlePromise(promise, _onsuccess, _onerror);
+                myHttp.handlePromise(promise, _onsuccess);
             }
             function _onsuccess(data) {
                 var rawdevices = data.result;
                 _handleDevicesData(rawdevices);
-                //localData.set('devices', vm.mydevices);
                 vm.tableParams.reload();
-                $rootScope.pendResolve('load-devices', toaster, 'success', '数采仪列表刷新', '刷新时间:'+new Date().Format('yyyy-MM-dd hh:mm:ss'));
-                _promiseResolve();
             }
-            function _onerror(data) {
-                $rootScope.pendResolve('load-devices', toaster, 'error', '数采仪列表获取失败', '失败原因:'+data);
-                _promiseResolve();
-
-            }
-        }
-
-        function _promiseResolve() {
-            $rootScope.pendResolve('login-success',toaster, 'success', '', '欢迎回来:'+vm.userInfo.username);
-            $rootScope.pendResolve('finish-edit-dev',toaster, 'success', '', '设备维护成功');
         }
 
         function _editDevice(group) {
             var deviceIndex = group.data[0].devIndex;
-            $rootScope.pendPromise('init-edit-device');
             $state.go('app.dev.edit' , {devIndex : deviceIndex});
         }
 

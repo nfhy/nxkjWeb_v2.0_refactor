@@ -9,7 +9,7 @@
         .module('naut')
         .run(appRun);
     /* @ngInject */   
-    function appRun($rootScope, $window) {
+    function appRun($rootScope, $window, $state, localData) {
 
       // Hook not found
       $rootScope.$on('$stateNotFound',
@@ -24,11 +24,15 @@
         function(event, toState, toParams, fromState, fromParams) {
           // success here
           // display new view from top
+            var userInfo = localData.get('user_info');
+            if (userInfo && userInfo.role) {
+                $rootScope.role = userInfo.role;
+            }
           $window.scrollTo(0, 0);
         });
 
     }
-    appRun.$inject = ['$rootScope', '$window'];
+    appRun.$inject = ['$rootScope', '$window', '$state', 'localData'];
 
 })();
 

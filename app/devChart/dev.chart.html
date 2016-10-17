@@ -1,14 +1,19 @@
 <div class="app-view-header">折线图数据
     <small>折线图数据</small>
 </div>
-<div class="col-md-3 col-md-offset-1">
-    <a ui-sref="app.dev.monitor" class="mr mb-sm btn btn-block btn-warning">
-        <strong>返回</strong>
-    </a>
-</div>
-<div class="container-fluid">
-    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
-    <div id="main" my-echart ui-options="{{devChartCtrl.option}}" class="col-md-12 col-lg-12 col-sm-12 maindiv"></div>
+<div class="panel panel-default">
+    <div class="panel-heading"><br/>
+        <a ui-sref="app.dev.monitor" class="btn btn-info">
+            <strong>返回</strong>
+        </a>
+    </div>
+
+    <div class="panel-body">
+        <div class="container-fluid" cg-busy="devChartCtrl.busyPromise">
+            <div id="main" my-echart ui-options="{{devChartCtrl.option}}" class="col-md-12 col-lg-12 col-sm-12 maindiv">
+            </div>
+        </div>
+    </div>
 </div>
 <style>
     .maindiv {

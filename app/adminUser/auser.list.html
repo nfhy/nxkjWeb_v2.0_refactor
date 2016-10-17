@@ -2,37 +2,45 @@
     <small>修改、新增、启用、停用用户</small>
 </div>
 <div class="container-fluid">
-    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
-    <table ng-table="userListCtrl.tableParams" class="table  table-bordered table-striped">
-        <tr ng-repeat="auser in $data">
-            <td title="'用户名'" sortable="'userName'">
-                {{auser.userName}}
-            </td>
-            <td title="'昵称'" sortable="'nickName'">
-                {{auser.nickName}}
-            </td>
-            <td title="'电话'" >
-                {{auser.tel}}
-            </td>
-            <td title="'通知'" >
-                {{auser.recvWarn == 1?'接收':'不接收'}}
-            </td>
-            <td title="'启用/停用状态'" sortable="'suspend'">
-                {{auser.suspend == 1?'停用':'启用'}}
-            </td>
-            <td title="'操作'">
-                <div ng-show="!rowform.$visible" class="buttons">
-                    <button ng-click="userListCtrl.editUser(auser)" title="编辑用户" class="btn btn-sm btn-info">
-                        <em class="fa fa-pencil"></em>
-                    </button>
-                    <button ng-click="userListCtrl.suspendOrResume(auser)" title="启用或停用用户" ng-class="auser.suspend==1?('btn btn-sm btn-success'):('btn btn-sm btn-danger')">
-                       <em ng-class="auser.suspend==1?'fa fa-thumbs-o-up':'fa fa-thumbs-o-down'"></em>
-                    </button>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div class="panel panel-default">
+        <div class="panel-heading"><br/>
+            <button class="btn btn-info" ng-click="userListCtrl.addUser()">新增用户</button>
+        </div>
 
-    <button class="btn btn-info" ng-click="userListCtrl.addUser()">新增用户</button>
+        <div class="panel-body">
+            <table ng-table="userListCtrl.tableParams" class="table  table-bordered table-striped">
+                <tr ng-repeat="auser in $data">
+                    <td title="'用户名'" sortable="'userName'">
+                        {{auser.userName}}
+                    </td>
+                    <td title="'昵称'" sortable="'nickName'">
+                        {{auser.nickName}}
+                    </td>
+                    <td title="'电话'" >
+                        {{auser.tel}}
+                    </td>
+                    <td title="'通知'" ng-class="auser.recvWarn==1?'text-success':'text-danger'" >
+                        {{auser.recvWarn == 1?'接收':'不接收'}}
+                    </td>
+                    <td title="'启用/停用状态'" sortable="'suspend'" ng-class="auser.enable==1?'text-success':'text-danger'">
+                        {{auser.enable == 0?'已停用':'已启用'}}
+                    </td>
+                    <td title="'操作'">
+                        <div ng-show="!rowform.$visible" class="buttons">
+                            <button ng-click="userListCtrl.editUser(auser)" title="编辑用户" class="btn btn-sm btn-info">
+                                <em class="fa fa-pencil"></em>
+                            </button>
+                            <button ng-click="userListCtrl.suspendOrResume(auser)" ng-if="auser.enable==1" title="停用用户" ng-show="auser.role!=3" class="btn btn-sm btn-danger">
+                                <em class="fa fa-thumbs-o-down"></em>
+                            </button>
+                            <button ng-click="userListCtrl.suspendOrResume(auser)" ng-if="auser.enable==0" title="启用用户" ng-show="auser.role!=3" class="btn btn-sm btn-success">
+                                <em class="fa fa-thumbs-o-up"></em>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
 
+        </div>
+    </div>
 </div>

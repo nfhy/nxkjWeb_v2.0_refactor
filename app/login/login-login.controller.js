@@ -8,16 +8,16 @@
         .module('naut')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$rootScope', '$state', 'localData', 'myHttp'];
+    LoginController.$inject = ['$rootScope', '$state', 'localData', 'myHttp', 'sAlert'];
 
-    function LoginController($rootScope, $state, localData, myHttp) {
+    function LoginController($rootScope, $state, localData, myHttp, sAlert) {
         var vm = this;
         vm.userInfo = localData.get('user_info');
         vm.isLoading = false;
 
         vm.login = _login;
 
-        if(vm.userInfo && vm.userInfo.username) {
+        if(vm.userInfo = localData.checkUserInfo()) {
             _login();
         }else {
             vm.userInfo = {};
@@ -25,7 +25,6 @@
         //登录
         function _login() {
             if (vm.isLoading) return;//防止多次点击多次提交
-            $rootScope.pendPromise('login-success');
             /*var promise = $rootScope.promiseTracker.createPromise();
             $rootScope.pendingPromises['login-success'] = promise;*/
             vm.isLoading = true;
@@ -80,7 +79,11 @@
                 }
                 localData.set('devTypeTable', devTypeTable);
                 vm.isLoading = false;
-                $state.go('app.field.list');
+                sAlert.success('登陆成功','').then(
+                    function() {
+                        $state.go('app.field.list');
+                    }
+                );
             }
         }
 
@@ -95,7 +98,6 @@
         }
 
         function onerror(data) {
-            alert('出错了...');
             console.log('err:'+data);
             vm.isLoading = false;
             vm.isError = true;

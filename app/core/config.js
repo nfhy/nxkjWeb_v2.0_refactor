@@ -5,9 +5,10 @@
   'use strict';
 
   angular
-    .module('naut')
-    .config(commonConfig)
-    .config(lazyLoadConfig);
+      .module('naut')
+      .config(commonConfig)
+      .config(lazyLoadConfig);
+      //.config(cfpLoadingBarConfig);
 
   // Common object accessibility
   commonConfig.$inject = ['$controllerProvider', '$compileProvider', '$filterProvider', '$provide'];
@@ -35,7 +36,12 @@
     });
 
   }
-
+/*
+  cfpLoadingBarConfig.$inject = ['cfpLoadingBarProvider'];
+  function cfpLoadingBarConfig(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.latencyThreshold = 500;
+  }
+*/
 })();
 
 

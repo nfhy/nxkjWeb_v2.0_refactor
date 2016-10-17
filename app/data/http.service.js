@@ -8,9 +8,9 @@
         .module('naut')
         .service('myHttp', myHttp);
 
-    myHttp.$inject = ['$http', '$timeout', '$state', 'localData'];
+    myHttp.$inject = ['$http', '$timeout', '$state', 'localData', 'sAlert'];
 
-    function myHttp($http, $timeout, $state, localData) {
+    function myHttp($http, $timeout, $state, localData, sAlert) {
         var myhttp = this;
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
         var url = 'http://localhost:8080/nxkj/input.do';
@@ -43,30 +43,32 @@
             if(!promise) return;
             promise
                 .success(function(data) {
-                    var msg = data.msg;
                     var innerData = data.data;
                     var resCode = ''+innerData.resCode;
                     if (resCode == '0') {//得到正常返回数据时
-                        var cmdToken = innerData.cmdToken;
                         onsuccess(innerData);
                     }
+                    /*
                     else if (resCode == '100010') {//服务器异步处理时
                         //轮询消息，循环查询异步处理结果
-                        var desc = innerData.desc;
                         var cmdToken = innerData.cmdToken;
                         var pollingMsg = {'msg' : 'getResult', 'data' : {'cmdToken' : cmdToken}};
                         //由于服务器异步处理，页面需要每隔1秒询问服务器是否完成操作，操作完成前，遮罩层一直显示
                         _polling(pollingMsg);
-                    }
+                    }*/
                     else if (resCode == '100013') {
-                        alert("会话超时，请重新登录");
-                        localData.flush();
-                        $state.go('login.login');
+                        sAlert.error("会话超时，请重新登录","")
+                            .then(function() {
+                                localData.flush();
+                                $state.go('login.login');
+                            });
                     }
                     else if (resCode == '100015') {
-                        alert("越权操作，请重新登录");
-                        localData.flush();
-                        $state.go('login.login');
+                        sAlert.error("越权操作", "")
+                            .then(function() {
+                                localData.flush();
+                                $state.go('login.login');
+                            });
                     }
                     else {//服务端出错了
                         var errMsg = httpResCode[resCode];
@@ -79,6 +81,7 @@
                                 errMsg = '出现未知错误';
                             }
                         }
+                        sAlert.error(errMsg, '');
                         if (onfail) {
                             onfail(errMsg);
                         }
@@ -87,7 +90,6 @@
                                 onerror(errMsg);
                             }
                             else {
-                                alert(errMsg);
                             }
                         }
                     }
@@ -98,7 +100,7 @@
                         onerror(data);
                     }
                     else {
-                        alert('出错了：' + data);
+                        SweetAlert.error('出错了：' + data, "");
                     }
                 });
 
@@ -125,7 +127,11 @@
         function _post(data) {
             var config = {};
             config.t = new Date().getTime();
-            //console.log('post',data.msg);
+            var userInfo = localData.checkUserInfo();
+            if (userInfo) {
+                data.data.token = userInfo.token;
+                data.data.userName = userInfo.username;
+            }
             return $http.post(url, data, config);
         }
 

@@ -22,11 +22,6 @@
         vm.mydevices = [];//设备列表
 
         vm.userInfo = localData.get('user_info');
-        if (!vm.userInfo) {
-            alert('会话过期，请重新登录...');
-            $state.go('login.login');
-            return;
-        }
 
         //ngtable设置，加载数据、排序和过滤
         vm.tableParams = new NgTableParams({

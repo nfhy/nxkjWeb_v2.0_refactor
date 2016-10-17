@@ -12,34 +12,35 @@
     <title data-ng-bind="pageTitle()"></title>
     <!-- build:css app/css/application.css vendor/bootstrap/dist/css/bootstrap.min.css-->
     <link rel="stylesheet" href="app/css/bootstrap.css">
-    <link id="mainstyles" rel="stylesheet" href="app/css/styles.css">
+    <link id="mainstyles" rel="stylesheet" href="app/css/styles.css" >
     <!-- endbuild-->
 </head>
 
 <body ng-cloak="" ng-class="{ 'layout-fixed' : app.layout.isFixed, 'layout-boxed' : app.layout.isBoxed, 'layout-dock' : app.layout.isDocked, 'layout-material': app.layout.isMaterial, 'aside-offscreen' : app.sidebar.isOffscreen, 'aside-mini' : app.sidebar.isMini, 'aside-right' : app.sidebar.isRight, 'footer-hidden': app.footer.hidden, 'in-app': !$state.includes('page')}">
 <div data-ui-view="" data-autoscroll="false" ng-controller="CoreController" class="app-container">
 </div>
-<!--
-<div class="layer-morph-container bg-info">
-   <div class="layer-morph-wrapper">
-      <div id="layer-search" ng-include="'templates/layer-search.html'" class="layer-morph"></div>
-      <div class="layer-morph-footer">Naut</div>
-   </div>
-</div>-->
 <!-- End Layer Morph-->
 <!-- build:vendor app/js/vendor.js-->
-<script src="vendor/modernizr/modernizr.custom.js"></script>
-<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular/angular.min.js"></script>
 <script src="vendor/angular-route/angular-route.min.js"></script>
 <script src="vendor/angular-animate/angular-animate.min.js"></script>
-<script src="vendor/angular-touch/angular-touch.min.js"></script>
 <script src="vendor/ngstorage/ngStorage.min.js"></script>
 
 <script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="vendor/oclazyload/dist/ocLazyLoad.min.js"></script>
-<script src="vendor/angular-promise-tracker-master/promise-tracker.js"></script>
-<script src="vendor/angular-promise-tracker-master/promise-tracker-http-interceptor.js"></script>
+
+<!-- sweet alert -->
+<link rel="stylesheet" href="vendor/sweetalert/dist/sweetalert.css">
+<script src="vendor/sweetalert/dist/sweetalert.min.js"></script>
+<script src="vendor/ng-sweet-alert/ng-sweet-alert.js"></script>
+
+<!-- angular busy -->
+<link rel="stylesheet" href="vendor/angular-busy/dist/angular-busy.css">
+<script src="vendor/angular-busy/dist/angular-busy.js"></script>
+<!-- cfp LoadingBar
+<link rel="stylesheet" href="vendor/angular-loading-bar-master/build/loading-bar.min.css"  media='all'>
+<script src="vendor/angular-loading-bar-master/build/loading-bar.min.js"></script>
 <!-- echarts -->
 <script src="vendor/eCharts/echarts.common.min.js"></script>
 <!-- endbuild-->
@@ -63,15 +64,14 @@
 <script src="app/routes/routes.provider.js"></script>
 <script src="app/routes/routes.run.js"></script>
 <script src="app/routes/vendor.constants.js"></script>
+<script src="app/settings/settings.service.js"></script>
+<script src="app/sweetAlert/sweet-altert.service.js"></script>
 <!--my js script-->
 <script src="app/commonTool.js"></script>
 <script src="app/data/http.service.js"></script>
 
 <script src="app/data/data.service.js"></script>
 <script src="app/data/data.factory.js"></script>
-
-<script src="app/page/page.input.directive.js"></script>
-<script src="app/page/page-load.controller.js"></script>
 
 <script src="app/adminUser/auser-list.controller.js"></script>
 <script src="app/adminUser/auser-edit.controller.js"></script>
@@ -91,6 +91,7 @@
 
 <script src="app/layout/header-nav.controller.js"></script>
 <script src="app/layout/ui-sidebar.directive.js"></script>
+
 </body>
 
 </html>

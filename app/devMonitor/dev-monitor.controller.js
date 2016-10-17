@@ -8,17 +8,11 @@
         .controller('devMonitorController', devMonitorController);
 
     devMonitorController.$inject = ['$rootScope', 'NgTableParams', '$filter',
-        '$state', 'myHttp', 'localData', 'toaster', '$timeout'];
-    function devMonitorController($rootScope, NgTableParams, $filter, $state, myHttp, localData, toaster, $timeout) {
+        '$state', 'myHttp', 'localData', '$timeout'];
+    function devMonitorController($rootScope, NgTableParams, $filter, $state, myHttp, localData, $timeout) {
         var vm = this;
         vm.looping = false;
         vm.userInfo = localData.get('user_info');
-        if (!vm.userInfo) {
-            alert('会话过期，请重新登录...');
-            $rootScope.initResolve();
-            $state.go('login.login');
-            return;
-        }
         vm.datasToShow = [];
         //ngtable设置，加载数据、排序和过滤
         vm.tableParams = new NgTableParams({
@@ -42,7 +36,6 @@
 
         vm.showChart = _showChart;
 
-        $rootScope.pendPromise('load-monitor');
         _loadData();//初始化数据
         _loopLoadData();//每分钟刷新数据
 
@@ -65,7 +58,7 @@
             var postData = {'msg' : 'webDevData', 'data' : {'userName' : vm.userInfo.username, 'token' : vm.userInfo.token} }
             var promise = myHttp.post(postData);
             if (promise) {
-                myHttp.handlePromise(promise, _onsuccess, _onerror);
+                myHttp.handlePromise(promise, _onsuccess);
             }
 
         }
@@ -73,23 +66,10 @@
         function _onsuccess(data) {
             _handleData(data);
             vm.tableParams.reload();
-            $rootScope.pendResolve('load-monitor', toaster, 'success', '实时数据刷新', '刷新时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss'));
-            _promiseResolve();
             if (vm.looping) {
-                toaster.pop('success', '实时数据刷新', '刷新时间:' + new Date().Format('yyyy-MM-dd hh:mm:ss'));
                 vm.looping = false;
             }
 
-        }
-
-        function _onerror(data) {
-            $rootScope.pendResolve('load-monitor', toaster, 'error', '实时数据刷新失败', '失败原因:' + data);
-            _promiseResolve();
-        }
-
-
-        function _promiseResolve() {
-            $rootScope.pendResolve('login-success',toaster, 'success', '', '欢迎回来:'+vm.userInfo.username);
         }
         //处理收到的监控数据
         //{"msg":"webDevice",

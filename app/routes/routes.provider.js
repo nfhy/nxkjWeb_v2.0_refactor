@@ -42,7 +42,7 @@
                     // if is a module, pass the name. If not, pass the array
                     var whatToLoad = getRequired(_arg);
                     // simple error check
-                    if(!whatToLoad) return $.error('Route resolve: Bad resource name [' + _arg + ']');
+                    if(!whatToLoad) return 'Route resolve: Bad resource name [' + _arg + ']';
                     // finally, return a promise
                     return $ocLL.load( whatToLoad );
                   });

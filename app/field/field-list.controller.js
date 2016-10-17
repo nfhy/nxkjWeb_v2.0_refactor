@@ -8,17 +8,11 @@
         .module('naut')
         .controller('FieldListController', FieldListController);
     /* @ngInject */
-    FieldListController.$inject = ['$rootScope', '$scope', 'NgTableParams', '$filter', '$state', 'myHttp', 'localData', 'toaster'];
-    function FieldListController($rootScope, $scope, NgTableParams, $filter, $state, myHttp, localData, toaster) {
+    FieldListController.$inject = ['$rootScope', '$scope', 'NgTableParams', '$filter', '$state', 'myHttp', 'localData'];
+    function FieldListController($rootScope, $scope, NgTableParams, $filter, $state, myHttp, localData) {
         var vm = this;
 
         vm.userInfo = localData.get('user_info');
-        if (!vm.userInfo) {
-            alert('会话过期，请重新登录...');
-            $rootScope.initResolve();
-            $state.go('login.login');
-            return;
-        }
         vm.fields = [];
         //start
         /*
@@ -63,41 +57,24 @@
         //获取区域列表，修改、删除、增加后都应该调用该方法并通知ngtable重载
         //{"msg":"webField","data":{"fieldIndex":0,”userName”:”zhenglei” ,”token”:”zhenglei”}}
         function _loadFileds() {
-            $rootScope.pendPromise('load-fields');
             /*var promise = $rootScope.promiseTracker.createPromise();
             $rootScope.pendingPromises['loadFields'] = promise;*/
             var data = {'msg' : 'webField' ,
                 'data' : {'fieldIndex' : 0, 'userName' : vm.userInfo.username, 'token' : vm.userInfo.token}};
             var promise = myHttp.post(data);
             if(promise) {
-                myHttp.handlePromise(promise, _onsuccess, _onerror);
+                myHttp.handlePromise(promise, _onsuccess);
             }
             function _onsuccess(data) {
                 vm.fields = data.result;
                 localData.set('fields', vm.fields);
                 vm.tableParams.reload();
-                $rootScope.pendResolve('load-fields',toaster, 'success', '园地列表刷新', '刷新时间:'+new Date().Format('yyyy-MM-dd hh:mm:ss'));
-                _promiseResolve();
             }
-            function _onerror(data) {
-                $rootScope.pendResolve('load-fields', toaster, 'error', '园地列表刷新失败', '失败原因：'+data);
-                _promiseResolve();
-            }
-        }
-
-        function _promiseResolve() {
-            $rootScope.pendResolve('finish-edit-field',toaster, 'success','', '园地维护成功');
-            $rootScope.pendResolve('login-success',toaster, 'success', '', '欢迎回来:'+vm.userInfo.username);
         }
 
         //跳转修改园地
         function _editField(field) {
             $state.go('app.field.edit' , {fieldIndex : field.fieldIndex});
-        }
-
-        //暂时不用
-        function _removeField(field) {
-
         }
 
         //跳转新增园地

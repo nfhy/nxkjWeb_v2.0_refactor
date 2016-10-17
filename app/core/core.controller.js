@@ -10,7 +10,7 @@
         .controller('CoreController', CoreController);
 
     /* @ngInject */
-    function CoreController($rootScope, promiseTracker) {
+    function CoreController($rootScope ) {
         // Get title for each page
         $rootScope.pageTitle = function() {
             return $rootScope.app.name + ' - ' + $rootScope.app.description;
@@ -23,6 +23,7 @@
             $event.stopPropagation();
         };
 
+        /*
         //全局promise跟踪器，主要负责控制加载页面的展示和隐藏
         $rootScope.pendingPromises = {};//延时用promise，主要在异步请求中使用
         //开始跟踪延时promise
@@ -36,7 +37,7 @@
             if (promise) {
                 promise.resolve();
                 delete $rootScope.pendingPromises[pendingKey];
-                if (toaster) toaster.pop(type, title, text);
+                //if (toaster) toaster.pop(type, title, text);
             }
         }
         $rootScope.initResolve = function() {
@@ -48,7 +49,7 @@
         $rootScope.promiseTracker = promiseTracker();
         $rootScope.$watch($rootScope.promiseTracker.active, function(isActive) {
             if (isActive) {
-                $rootScope.loading = true;
+                $rootScope.loading = false;
                 $rootScope.$broadcast('loadingStart');
             }
             else {
@@ -56,7 +57,9 @@
                 $rootScope.$broadcast('loadingEnd');
             }
         });
+        */
+
     }
-    CoreController.$inject = ['$rootScope', 'promiseTracker'];
+    CoreController.$inject = ['$rootScope'];
 
 })();

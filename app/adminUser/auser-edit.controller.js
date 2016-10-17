@@ -8,16 +8,11 @@
         .module('naut')
         .controller('AUserEditController', AuserEditController);
     /* @ngInject */
-    AuserEditController.$inject = ['$rootScope', '$state', 'myHttp', 'localData', '$stateParams', 'toaster'];
-    function AuserEditController($rootScope, $state, myHttp, localData, $stateParams, toaster) {
+    AuserEditController.$inject = ['$rootScope', '$state', 'myHttp', 'localData', '$stateParams', 'sAlert'];
+    function AuserEditController($rootScope, $state, myHttp, localData, $stateParams, sAlert) {
         var vm = this;
 
         vm.userInfo = localData.get('user_info');
-        if (!vm.userInfo) {
-            alert('会话过期，请重新登录...');
-            $state.go('login.login');
-            return;
-        }
 
         //根据fieldIndex获取field
         var username = $stateParams['userName'];
@@ -76,11 +71,14 @@
             }
 
             function _onsuccess() {
-                $state.go('app.auser.list');
+                sAlert.success('成功保存用户信息', '').then(
+                    function() {
+                    $state.go('app.auser.list');
+                });
             }
 
             function _onerror(data) {
-                $rootScope.pendResolve('finish-edit-user', toaster, 'error', '操作失败', '失败原因:'+data);
+                SweetAlert.error('操作失败：'+data, '');
             }
         }
     }

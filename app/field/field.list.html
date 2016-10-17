@@ -2,30 +2,37 @@
    <small>修改、新增园地</small>
 </div>
 <div class="container-fluid">
-   <table ng-table="fieldListCtrl.tableParams" class="table  table-bordered table-striped" show-filter="true">
-      <tr ng-repeat="field in $data">
-         <td title="'编号'" sortable="'fieldIndex'">
-            {{field.fieldIndex}}
-         </td>
-         <td title="'园地名称'" filter="{ 'fieldName' : 'text'}" sortable="'fieldName'">
-            {{field.fieldName}}
-         </td>
-         <td title="'说明'" filter="{ 'fieldDesc' : 'text'}" >
-            {{field.fieldDesc}}
-         </td>
-         <td title="'操作'">
-            <div ng-show="!rowform.$visible" class="buttons">
-               <button ng-click="fieldListCtrl.editField(field)" class="btn btn-sm btn-info">
-                  <em class="fa fa-pencil"></em>
-               </button>
-               <!--<button ng-click="fieldListCtrl.removeField(field)" title="Delete" class="btn btn-sm btn-danger">
-                  <em class="fa fa-trash"></em>
-               </button>-->
-            </div>
-         </td>
-      </tr>
-   </table>
+   <div class="panel panel-default">
+      <div class="panel-heading"><br/>
+         <button class="btn btn-info" ng-hide="role!=3" ng-click="fieldListCtrl.addField()">新增园地</button>
+      </div>
 
-   <button class="btn btn-info" ng-hide="role!=3" ng-click="fieldListCtrl.addField()">新增园地</button>
+      <div class="panel-body">
+         <table ng-table="fieldListCtrl.tableParams" class="table  table-bordered table-striped" show-filter="true">
+            <tr ng-repeat="field in $data">
+               <td title="'编号'" sortable="'fieldIndex'">
+                  {{field.fieldIndex}}
+               </td>
+               <td title="'园地名称'" filter="{ 'fieldName' : 'text'}" sortable="'fieldName'">
+                  {{field.fieldName}}
+               </td>
+               <td title="'说明'" filter="{ 'fieldDesc' : 'text'}" >
+                  {{field.fieldDesc}}
+               </td>
+               <td title="'操作'">
+                  <div ng-show="!rowform.$visible" class="buttons">
+                     <button ng-click="fieldListCtrl.editField(field)" class="btn btn-sm btn-info">
+                        <em class="fa fa-pencil"></em>
+                     </button>
+                     <!--<button ng-click="fieldListCtrl.removeField(field)" title="Delete" class="btn btn-sm btn-danger">
+                        <em class="fa fa-trash"></em>
+                     </button>-->
+                  </div>
+               </td>
+            </tr>
+         </table>
+
+      </div>
+   </div>
 
 </div>

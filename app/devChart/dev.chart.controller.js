@@ -6,17 +6,14 @@
     angular
         .module('naut')
         .controller('devChartController', devChartController);
-    devChartController.$inject = ['$rootScope', 'myHttp', 'localData', 'toaster', '$state'];
+    devChartController.$inject = ['myHttp', 'localData', '$q', 'sAlert'];
 
-    function devChartController($rootScope, myHttp, localData, toaster, $state) {
+    function devChartController(myHttp, localData, $q, sAlert) {
         var vm = this;
         vm.userInfo = localData.get('user_info');
         vm.chartSetting = localData.get('chartSetting');
-        if (!vm.userInfo || !vm.chartSetting) {
-            alert('会话过期，请重新登录...');
-            $state.go('login.login');
-            return;
-        }
+        vm.d = $q.defer();
+        vm.busyPromise = vm.d.promise;
         _loadData();
         //获取历史数据
         //{"msg":"webHistory","data":{"devIndex":100100,"startTime":"2016-01-26 16:20:10","endTime":"",”space”:1,”token”:”zhenglei”}}
@@ -24,26 +21,23 @@
             var postMsg = {'msg' : 'webHistory',
                 'data' : {'devIndex' : vm.chartSetting.devIndex, 'startTime' : vm.chartSetting.startTime, 'endTime' : vm.chartSetting.endTime, 'space' : vm.chartSetting.space, 'token' : vm.userInfo.token}};
             var promise = myHttp.post(postMsg);
+
+            promise.then(function(){vm.d.resolve();});
+
             if (promise) {
-                myHttp.handlePromise(promise, _onsuccess, _onerror, _onerror);
+                myHttp.handlePromise(promise, _onsuccess);
             }
         }
 
         function _onsuccess(data) {
             _handleData(data.result);
-            $rootScope.pendResolve('generate-chart', toaster, 'success', '', '加载数据成功');
-        }
-
-        function _onerror(data) {
-            $rootScope.pendResolve('generate-chart', toaster, 'error', '', '加载数据失败,'+data);
-
         }
         //{"msg":"webHistory","data":{"resCode":"0","desc":"操作完成",”cmdToken”:”xxxxx”,"devIndex":100100,
         // "result":[{"average":10.0 , “min”:9.0,”max”:11.0,"time":"2016-01-26 16:20:00"} space = 2 | 3
         //":[{"val":10.0 ,”warn”:0,"time":"2016-01-26 16:20:00"} space = 1
         var _handleData = function(result) {
             if (!result) {
-                toaster.pop('error', '', '当前设置下没有设备读数');
+                sAlert.error('当前设置下没有设备读数', '');
             }
             vm.channelDev = localData.getMyDeviceByDevIndex(vm.chartSetting.devIndex);
 

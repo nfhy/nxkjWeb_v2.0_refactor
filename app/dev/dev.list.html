@@ -2,46 +2,52 @@
     <small>修改、新增数采仪，维护数采仪的通道设备</small>
 </div>
 <div class="container-fluid">
-    <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
-    <button class="btn btn-info" ng-hide="role!=3" ng-click="devListCtrl.addDevice()">新增数采仪</button>
-    <a class="btn btn-info" ui-sref="app.dev.monitor">实时数据监控</a>
-    <table ng-table="devListCtrl.tableParams" class="table table-condensed table-bordered table-striped table-hover">
-        <colgroup>
-            <col width="20%" />
-            <col width="20%" />
-            <col width="40%" />
-            <col width="10%" />
-        </colgroup>
-        <tr class="ng-table-group" ng-repeat-start="group in $groups">
-            <td colspan="3">
-                <a href="" ng-click="group.$hideRows = !group.$hideRows">
-                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
-                    <strong>{{ group.value }}</strong>
-                </a>
-            </td>
-            <td title="'操作'" ng-hide="role!=3">
-                <div ng-show="!rowform.$visible" class="buttons">
-                    <button ng-click="devListCtrl.editDevice(group)" title="" class="btn btn-sm btn-info">
-                        <em class="fa fa-pencil"></em>
-                    </button>
-                </div>
-            </td>
-        </tr>
-        <tr ng-hide="group.$hideRows" ng-repeat="mydevice in group.data" ng-repeat-end>
-            <td data-title="'通道编号'">
-                {{mydevice.channelIndex}}
-            </td>
-            <td data-title="'设备类型'" >
-                {{mydevice.devTypeName}}
-            </td>
-            <td data-title="'园地'" >
-                {{mydevice.fieldName}}
-            </td>
-            <td title="'操作'" ng-hide="role!=3">
-                <div ng-show="!rowform.$visible" class="buttons">
-                    &nbsp;
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div class="panel panel-default">
+        <div class="panel-heading"><br/>
+            <button class="btn btn-info" ng-hide="role!=3" ng-click="devListCtrl.addDevice()">新增数采仪</button>
+            <a class="btn btn-info" ui-sref="app.dev.monitor">实时数据监控</a>
+        </div>
+
+        <div class="panel-body">
+            <table ng-table="devListCtrl.tableParams" class="table table-condensed table-bordered table-striped table-hover">
+                <colgroup>
+                    <col width="20%" />
+                    <col width="20%" />
+                    <col width="40%" />
+                    <col width="10%" />
+                </colgroup>
+                <tr class="ng-table-group" ng-repeat-start="group in $groups">
+                    <td colspan="3">
+                        <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                            <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                            <strong>{{ group.value }}</strong>
+                        </a>
+                    </td>
+                    <td title="'操作'" ng-hide="role!=3">
+                        <div ng-show="!rowform.$visible" class="buttons">
+                            <button ng-click="devListCtrl.editDevice(group)" title="" class="btn btn-sm btn-info">
+                                <em class="fa fa-pencil"></em>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                <tr ng-hide="group.$hideRows" ng-repeat="mydevice in group.data" ng-repeat-end>
+                    <td data-title="'通道编号'">
+                        {{mydevice.channelIndex}}
+                    </td>
+                    <td data-title="'设备类型'" >
+                        {{mydevice.devTypeName}}
+                    </td>
+                    <td data-title="'园地'" >
+                        {{mydevice.fieldName}}
+                    </td>
+                    <td title="'操作'" ng-hide="role!=3">
+                        <div ng-show="!rowform.$visible" class="buttons">
+                            &nbsp;
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

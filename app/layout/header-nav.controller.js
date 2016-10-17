@@ -10,7 +10,7 @@
         .module('naut')
         .controller('HeaderNavController', HeaderNavController);
     /* @ngInject */
-    function HeaderNavController($rootScope, localData, $state) {
+    function HeaderNavController($rootScope, localData, $state, SweetAlert) {
         var vm = this;
         vm.headerMenuCollapsed = true;
 
@@ -19,8 +19,15 @@
         };
 
         vm.logout = function() {
-            localData.flush();
-            $state.go('login.login');
+            SweetAlert.confirm('确定要退出系统吗？', {
+                title: '',
+                confirmButtonText: '确认',
+                cancelButtonText: '取消'
+            })
+                .then(function() {
+                    localData.flush();
+                    $state.go('login.login');
+                });
         }
 
         // Adjustment on route changes
@@ -29,6 +36,6 @@
         });
 
     }
-    HeaderNavController.$inject = ['$rootScope', 'localData', '$state'];
+    HeaderNavController.$inject = ['$rootScope', 'localData', '$state', 'SweetAlert'];
 
 })();

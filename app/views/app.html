@@ -1,4 +1,3 @@
-<toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
 <!-- top navbar-->
 <header ng-include="'app/views/top-navbar.html'" ng-class="app.theme.topbar"></header>
 <!-- Sidebar-->
@@ -15,44 +14,3 @@
       <img src="app/img/loading.gif" style="height:100px;width:100px"/>加载中。。。
    </div>
 </div>
-<script id="modal-login.html" type="text/ng-template">
-   <div class="modal">
-      <div class="container container-sm animated fadeInDown" ng-controller="LoginController as LoginCtrl">
-         <div class="center-block mt-xl">
-            <!-- START panel-->
-            <h1>&nbsp;</h1>
-            <div class="panel">
-               <div class="panel-body">
-                  <p class="pv text-bold">农新科技后台管理系统</p>
-                  <form name="loginForm" role="form" class="form-validate mb-lg" ng-submit="LoginCtrl.login()">
-                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                           <div class="form-group has-feedback mb">
-                              <input name="username" ng-model="LoginCtrl.userInfo.username" type="text" required="" ng-maxlength="25" placeholder="请输入用户名" autocomplete="off" class="form-control" />
-                              <span class="fa fa-user form-control-feedback text-muted"></span>
-                           </div>
-                           <br/>
-                           <div class="form-group has-feedback">
-                              <input id="password" ng-model="LoginCtrl.userInfo.password" type="password" required="" ng-maxlength="25" placeholder="请输入密码" class="form-control" />
-                              <span class="fa fa-lock form-control-feedback text-muted"></span>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-6 col-md-offset-3">
-                           <button type="submit" ng-disabled="loginForm.$invalid||LoginCtrl.isLoading" class="btn btn-block btn-primary mb">登录</button>
-                           <p ng-show="LoginCtrl.isLoading" class="bg-success">
-                              <em class="icon-loader"></em>登录中,请稍候...</p>
-                           <p ng-show="LoginCtrl.isError" class="bg-danger">
-                              <em class="icon-circle-cross"></em>{{LoginCtrl.errorMsg}}</p>
-                        </div>
-                     </div>
-                  </form>
-               </div>
-            </div>
-            <!-- END panel-->
-            <div ng-include="'app/login/login.footer.html'" class="p-lg text-center"></div>
-         </div>
-      </div>
-   </div>
-</script>

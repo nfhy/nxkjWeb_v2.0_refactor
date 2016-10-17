@@ -10,17 +10,11 @@
         .module('naut')
         .controller('FieldEditController', FieldEditController);
     /* @ngInject */
-    FieldEditController.$inject = ['$rootScope', '$state', 'myHttp', 'localData', '$stateParams', 'toaster'];
-    function FieldEditController($rootScope, $state, myHttp, localData, $stateParams, toaster) {
+    FieldEditController.$inject = ['$rootScope', '$state', 'myHttp', 'localData', '$stateParams', 'sAlert'];
+    function FieldEditController($rootScope, $state, myHttp, localData, $stateParams , sAlert) {
         var vm = this;
 
         vm.userInfo = localData.get('user_info');
-        if (!vm.userInfo) {
-            alert('会话过期，请重新登录...');
-            $rootScope.initResolve();
-            $state.go('login.login');
-            return;
-        }
 
         //根据fieldIndex获取field
         var fieldIndex = parseInt($stateParams['fieldIndex']);
@@ -42,8 +36,10 @@
             }*/
             vm.field = localData.getFieldByFieldIndex(fieldIndex);
             if (!vm.field) {
-                alert('要修改的园地不存在，请返回重新选择');
-                $state.go('app.field.list');
+                sAlert.error('要修改的园地不存在，请返回重新选择','')
+                    .then(function() {
+                        $state.go('app.field.list');
+                    })
                 return;
             }
         }
@@ -80,7 +76,6 @@
         }
         //1、新增，2、修改 ,修改时，需要带上fieldIndex
         function _submit() {
-            $rootScope.pendPromise('finish-edit-field');
             var isAdd = vm.addOrEdit == 'A';
             if (isAdd) {
                 _addSubmit();
@@ -124,11 +119,14 @@
             }
 
             function _onsuccess() {
-                $state.go('app.field.list');
+                sAlert.success('保存成功', '').then(function() {
+                    $state.go('app.field.list');
+                });
             }
 
             function _onerror(data) {
-                $rootScope.pendResolve('finish-edit-field', toaster, 'error', '操作失败', '失败原因:'+data);
+                sAlert.error('提交失败：' + data, '').then(function() {
+                });
             }
         }
     }
