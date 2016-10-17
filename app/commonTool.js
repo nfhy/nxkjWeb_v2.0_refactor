@@ -21,7 +21,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
     for (var k in o)
         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-}
+};
 
 //js对象转string，主要为了测试时打印日志
 function O2String(O) {
@@ -40,21 +40,21 @@ function O2String(O) {
         J = O.toString();
     }
     else if (Object.prototype.toString.apply(O) === '[object Object]') {
-        for (var i in O) {
-            O[i] = typeof (O[i]) == 'string' ? '"' + O[i] + '"' : (typeof (O[i]) === 'object' ? O2String(O[i]) : O[i]);
-            S.push('"' + i + '":' + O[i]);
+        for (var k in O) {
+            O[k] = typeof (O[k]) == 'string' ? '"' + O[k] + '"' : (typeof (O[k]) === 'object' ? O2String(O[k]) : O[k]);
+            S.push('"' + k + '":' + O[k]);
         }
         J = '{' + S.join(',') + '}';
     }
     return J;
-};
+}
 
 function getBrowserInfo()
 {
     var agent = navigator.userAgent.toLowerCase() ;
 
     var regStr_ie = /msie [\d.]+;/gi ;
-    var regStr_ff = /firefox\/[\d.]+/gi
+    var regStr_ff = /firefox\/[\d.]+/gi;
     var regStr_chrome = /chrome\/[\d.]+/gi ;
     var regStr_saf = /safari\/[\d.]+/gi ;
 //IE

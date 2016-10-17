@@ -40,9 +40,8 @@
                 sAlert.error('当前设置下没有设备读数', '');
             }
             vm.channelDev = localData.getMyDeviceByDevIndex(vm.chartSetting.devIndex);
-
+            var date = [];
             if (vm.chartSetting.space == '1') {
-                var date = [];
                 var data = [];
                 for (var i = 0; i <= result.length-1; i++) {
                     data.push(result[i].val);
@@ -51,15 +50,14 @@
                 vm.option = myoption(date, ['读数'], [myseries('读数',0,data)]);
             }
             else {
-                var date = [];
                 var dataMax = [];
                 var dataMin = [];
                 var dataAve = [];
-                for (var i = 0; i <= result.length-1; i++) {
-                    dataMax.push(result[i].max);
-                    dataMin.push(result[i].min);
-                    dataAve.push(result[i].average);
-                    date.push(result[i].time);
+                for (var j = 0; j <= result.length-1; j++) {
+                    dataMax.push(result[j].max);
+                    dataMin.push(result[j].min);
+                    dataAve.push(result[j].average);
+                    date.push(result[j].time);
                 }
                 vm.option = myoption(date, ['最大值', '最小值', '平均值'], [myseries('最大值', 0, dataMax), myseries('最小值', 1, dataMin), myseries('平均值', 2, dataAve)]);
             }
@@ -116,7 +114,7 @@
                     }
                 },
                 data: data
-            }
+            };
         }
-    }
+    };
 })();

@@ -141,7 +141,7 @@
                 resolve: {
                     assets: Route.require('ngTable', 'ngTableExport')
                 }
-            })
+            });
     }
 
 })();

@@ -28,7 +28,7 @@
                     localData.flush();
                     $state.go('login.login');
                 });
-        }
+        };
 
         // Adjustment on route changes
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {

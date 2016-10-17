@@ -24,10 +24,10 @@
                 'startTime' : vm.dt1str,
                 'endTime' : vm.dt2str,
                 'space' : vm.space
-            }
+            };
             localData.set('chartSetting', chartSetting);
             $state.go('app.dev.chart');
-        }
+        };
         //space
         vm.spaceChange = function() {
             if (vm.space == '1') {
@@ -40,7 +40,7 @@
                 vm.spaceMsg = '数据采样精确到天，显示每天最大值、最小值和平均值数据，选择起始时间和截止时间即可生成折线图';
             }
             vm.settingMsg();
-        }
+        };
         //date picker
         vm.today = function() {
             vm.dt1 = new Date();
@@ -79,14 +79,14 @@
             vm.dt1.setSeconds(vm.mytime1.getSeconds());
             vm.dt1str = vm.dt1.Format('yyyy-MM-dd hh:mm:ss');
             vm.settingMsg();
-        }
+        };
         vm.dt2Change = function () {
             vm.dt2.setHours(vm.mytime2.getHours());
             vm.dt2.setMinutes(vm.mytime2.getMinutes());
             vm.dt2.setSeconds(vm.mytime2.getSeconds());
             vm.dt2str = vm.dt2.Format('yyyy-MM-dd hh:mm:ss');
             vm.settingMsg();
-        }
+        };
         // Timepicker
         // -----------------------------------
         vm.mytime1 = new Date();
@@ -142,7 +142,7 @@
                 }
             }
             vm.settingMsgStr = msg;
-        }
+        };
     }
 
 })();

@@ -39,7 +39,7 @@
                 sAlert.error('要修改的园地不存在，请返回重新选择','')
                     .then(function() {
                         $state.go('app.field.list');
-                    })
+                    });
                 return;
             }
         }

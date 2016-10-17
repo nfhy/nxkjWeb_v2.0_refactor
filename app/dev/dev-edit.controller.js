@@ -97,7 +97,7 @@
                 'devTypeIndex' : dev.devTypeIndex,
                 'devDesc' : dev.devDesc,
                 'devLocate' : dev.devLocate
-            }
+            };
             var postData = {'msg' : 'devMgr', 'data' : {'token' : vm.userInfo.token,'userName' : vm.userInfo.username, 'cmd' : 1, 'detail' : detail}};
             var promise = myHttp.post(postData);
             if (promise) {
@@ -119,7 +119,7 @@
                 'devTypeIndex' : dev.devTypeIndex,
                 'devDesc' : dev.devDesc,
                 'devLocate' : dev.devLocate
-            }
+            };
             var channelDevList = dev.channelDevList;
             var channelDevListToPost = [];
             for (var i = 0; i <= channelDevList.length - 1; i++) {

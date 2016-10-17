@@ -30,7 +30,7 @@
             '100013' : '会话超时，请重新登录',
             '100014' : '园地不存在',
             '100015' : '越权操作'
-        }
+        };
         myhttp.get = _get;
         myhttp.post = _post;
         myhttp.handlePromise = _handlePromise;

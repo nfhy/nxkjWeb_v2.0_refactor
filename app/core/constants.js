@@ -17,6 +17,6 @@
       .value('cgBusyDefaults',{//cgbusy default
         message:'正在加载数据，请稍候',
         minDuration: 700
-      });;
+      });
 
 })();

@@ -17,7 +17,7 @@
             return _alert(title, message, 'success');
         }
         function _errorAlert(title, message) {
-            return _alert(title, message, 'error')
+            return _alert(title, message, 'error');
         }
         function _alert(title, message, type) {
             var promise = SweetAlert.confirm(

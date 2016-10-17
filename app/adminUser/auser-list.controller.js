@@ -65,7 +65,7 @@
 
         function _suspendOrResume(auser) {
             var promise;
-            if (auser.enable == 0){
+            if (auser.enable === 0){
                 promise = _resume(auser);
             }
             else {

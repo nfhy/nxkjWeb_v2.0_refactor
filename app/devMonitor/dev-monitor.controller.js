@@ -55,7 +55,7 @@
         //发送请求，获取实时数据
         //{"msg":"webDevData","data":{"userName":"zhenglei",”token”:”zhenglei”}}
         function _loadData() {
-            var postData = {'msg' : 'webDevData', 'data' : {'userName' : vm.userInfo.username, 'token' : vm.userInfo.token} }
+            var postData = {'msg' : 'webDevData', 'data' : {'userName' : vm.userInfo.username, 'token' : vm.userInfo.token} };
             var promise = myHttp.post(postData);
             if (promise) {
                 myHttp.handlePromise(promise, _onsuccess);

@@ -79,13 +79,13 @@
                         'devIndex' : devIndex,
                         'devPower' : devPower,
                         'devDesc' : devDesc
-                    }
+                    };
                     var channel = channelDevList[j];
                     mydevice.channelDevIndex = channel.devIndex;
                     mydevice.channelIndex = parseInt(channel.devIndex)%100+1;
                     mydevice.devTypeIndex = channel.devTypeIndex;
                     var devType = localData.getByCode('devTypeTable', mydevice.devTypeIndex);
-                    mydevice.devTypeName = devType?devType.devTypeName : (parseInt(mydevice.devTypeIndex) == 0?'无设备' : '未知设备类型');
+                    mydevice.devTypeName = devType?devType.devTypeName : (parseInt(mydevice.devTypeIndex) === 0?'无设备' : '未知设备类型');
                     mydevice.paramName = devType?devType.paramName : '';
                     mydevice.fieldIndex = channel.fieldIndex;
                     var field = localData.getFieldByFieldIndex(mydevice.fieldIndex);

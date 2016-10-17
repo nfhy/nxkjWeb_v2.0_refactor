@@ -87,7 +87,7 @@
             getMyDeviceByDevIndex : getMyDeviceByDevIndex,
             getAuserByUsername : getAuserByUsername,
             checkUserInfo : checkUserInfo
-        }
+        };
     }
 
-})()
+})();

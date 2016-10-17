@@ -16,8 +16,8 @@
         vm.isLoading = false;
 
         vm.login = _login;
-
-        if(vm.userInfo = localData.checkUserInfo()) {
+        vm.userInfo = localData.checkUserInfo();
+        if(vm.userInfo) {
             _login();
         }else {
             vm.userInfo = {};
