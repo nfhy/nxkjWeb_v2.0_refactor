@@ -10,8 +10,8 @@
     <meta name="description" content="{{app.description}}">
     <meta name="keywords" content="app, responsive, angular, bootstrap, dashboard, admin">
     <title data-ng-bind="pageTitle()"></title>
-    <!-- build:css app/css/application.css-->
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
+    <!-- build:css app/css/application.css vendor/bootstrap/dist/css/bootstrap.min.css-->
+    <link rel="stylesheet" href="app/css/bootstrap.css">
     <link id="mainstyles" rel="stylesheet" href="app/css/styles.css">
     <!-- endbuild-->
 </head>
@@ -45,32 +45,30 @@
 <!-- endbuild-->
 <!-- build:js app/js/application.js-->
 <script src="app/app.module.js"></script>
-<script src="app/modules/common/directives/animate-enabled.directive.js"></script>
-<script src="app/modules/common/directives/chained-animation.directive.js"></script>
-<script src="app/modules/common/directives/check-all-table.directive.js"></script>
-<script src="app/modules/common/directives/fullscreen.directive.js"></script>
-<script src="app/modules/common/directives/reset-key.directive.js"></script>
-<script src="app/modules/common/filters/title-case.filter.js"></script>
-<script src="app/modules/common/services/browser-detection.service.js"></script>
-<script src="app/modules/common/services/support.service.js"></script>
-<script src="app/modules/common/services/touch-drag.service.js"></script>
-<script src="app/modules/core/config.js"></script>
-<script src="app/modules/core/constants.js"></script>
-<script src="app/modules/core/core.controller.js"></script>
-<script src="app/modules/core/core.run.js"></script>
-<script src="app/modules/icons/climacon.directive.js"></script>
-<script src="app/modules/routes/routes.config.js"></script>
-<script src="app/modules/routes/routes.provider.js"></script>
-<script src="app/modules/routes/routes.run.js"></script>
-<script src="app/modules/routes/vendor.constants.js"></script>
-<script src="app/modules/settings/settings.controller.js"></script>
-<script src="app/modules/settings/settings.service.js"></script>
+<script src="app/common/directives/animate-enabled.directive.js"></script>
+<script src="app/common/directives/chained-animation.directive.js"></script>
+<script src="app/common/directives/check-all-table.directive.js"></script>
+<script src="app/common/directives/fullscreen.directive.js"></script>
+<script src="app/common/directives/reset-key.directive.js"></script>
+<script src="app/common/filters/title-case.filter.js"></script>
+<script src="app/common/services/browser-detection.service.js"></script>
+<script src="app/common/services/support.service.js"></script>
+<script src="app/common/services/touch-drag.service.js"></script>
+<script src="app/core/config.js"></script>
+<script src="app/core/constants.js"></script>
+<script src="app/core/core.controller.js"></script>
+<script src="app/core/core.run.js"></script>
+<script src="app/icons/climacon.directive.js"></script>
+<script src="app/routes/routes.config.js"></script>
+<script src="app/routes/routes.provider.js"></script>
+<script src="app/routes/routes.run.js"></script>
+<script src="app/routes/vendor.constants.js"></script>
 <!--my js script-->
 <script src="app/commonTool.js"></script>
-<script src="app/modules/http/http.service.js"></script>
+<script src="app/data/http.service.js"></script>
 
-<script src="app/modules/data/data.service.js"></script>
-<script src="app/modules/data/data.factory.js"></script>
+<script src="app/data/data.service.js"></script>
+<script src="app/data/data.factory.js"></script>
 
 <script src="app/page/page.input.directive.js"></script>
 <script src="app/page/page-load.controller.js"></script>

@@ -448,15 +448,6 @@
                 url : '/auser',
                 template : '<div ui-view ng-class="app.views.animation"></div>'
             })
-            .state('app.auser.info',{
-                url : '/info',
-                controller : 'userInfoController',
-                controllerAs : 'userInfo',
-                templateUrl : 'app/adminUser/auser.info.html',
-                resolve: {
-                    assets: Route.require('xeditable')
-                }
-            })
             .state('app.auser.list',{
                 url : '/list',
                 controller : 'AUserListController',

@@ -20,7 +20,7 @@
             return;
         }
         vm.fields = [];
-        //TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT start
+        //start
         /*
         vm.fields = [
             {"fieldIndex":1,"fieldName":"甲鱼塘1","fieldDesc":"区域1描述",
@@ -29,7 +29,7 @@
                 ,{"fieldIndex":2,"fieldName":"甲鱼塘2","fieldDesc":"区域2描述","devList":[{"devIndex":100102, "devName":"设备3","devTpeIndex":4,"min":5.0,"max":8.0 },{"devIndex":100103, "devName":"设备4","devTypeIndex":4,"min":5.0,"max":8.0 }]},{"fieldIndex":3,"fieldName":"甲鱼塘3","fieldDesc":"区域3描述","devList":[{"devIndex":100104, "devName":"设备5","devTpeIndex":4,"min":5.0,"max":8.0 },{"devIndex":100105, "devName":"设备6","devTypeIndex":4,"min":5.0,"max":8.0 }]}]
         ;
         localData.set('fields', vm.fields);*/
-        //TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT end
+        //end
         vm.addField = _addField;
         vm.editField = _editField;
         vm.loadFields = _loadFileds;
