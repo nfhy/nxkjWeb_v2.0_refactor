@@ -5,7 +5,7 @@
     'use strict';
     angular.module('naut')
         .factory('localData', dataFactory);
-
+    dataFactory.$inject = ['$window'];
     function dataFactory($window) {
         //一般化方法
         function _set(key, data) {

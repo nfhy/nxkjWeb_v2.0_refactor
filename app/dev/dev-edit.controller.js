@@ -10,8 +10,8 @@
         .module('naut')
         .controller('DevEditController', DeviceEditController);
     /* @ngInject */
-    DeviceEditController.$inject = ['$rootScope', '$state', 'myHttp', 'localData', '$stateParams', 'sAlert'];
-    function DeviceEditController($rootScope, $state, myHttp, localData, $stateParams, sAlert) {
+    DeviceEditController.$inject = ['$state', 'myHttp', 'localData', '$stateParams', 'sAlert'];
+    function DeviceEditController( $state, myHttp, localData, $stateParams, sAlert) {
         var vm = this;
         vm.dev = {};
         vm.userInfo = localData.get('user_info');
@@ -73,7 +73,7 @@
             var devTypeTable = localData.get('devTypeTable');
             var devTypes = [];
             for (var devTypeIndex in devTypeTable) {
-                if (parseInt(devTypeIndex) == 4) continue;
+                if (parseInt(devTypeIndex) == 1) continue;
                 devTypes.push(devTypeTable[devTypeIndex]);
             }
             vm.devTypes = devTypes;
@@ -138,7 +138,7 @@
             var postData = {'msg' : 'devMgr', 'data' : {'token' : vm.userInfo.token,'userName' : vm.userInfo.username, 'cmd' : 2, 'detail' : detail}};
             var promise = myHttp.post(postData);
             if (promise) {
-                myHttp.handlePromise(promise, _onsuccess, _onerror);
+                myHttp.handlePromise(promise, _onsuccess);
             }
         }
 

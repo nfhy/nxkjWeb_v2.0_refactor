@@ -10,9 +10,8 @@
         .run(appRun);
 
 
-    appRun.$inject = ['$rootScope', '$state', '$stateParams', '$localStorage', 'settings',
-        'browser'];
-    function appRun($rootScope, $state, $stateParams, $localStorage, settings, browser) {
+    appRun.$inject = ['$rootScope', '$state', '$stateParams', '$localStorage', 'settings'];
+    function appRun($rootScope, $state, $stateParams, $localStorage, settings) {
 
         // Set reference to access them from any scope
         $rootScope.$state = $state;
@@ -21,10 +20,6 @@
 
         //translator.init();
         settings.init();
-
-        // add a classname to target different platforms form css
-        var root = document.querySelector('html');
-        root.className += ' ' + browser.platform;
     }
 
 })();

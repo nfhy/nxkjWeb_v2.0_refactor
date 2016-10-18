@@ -8,8 +8,8 @@
         .module('naut')
         .controller('AUserEditController', AuserEditController);
     /* @ngInject */
-    AuserEditController.$inject = ['$rootScope', '$state', 'myHttp', 'localData', '$stateParams', 'sAlert'];
-    function AuserEditController($rootScope, $state, myHttp, localData, $stateParams, sAlert) {
+    AuserEditController.$inject = ['$state', 'myHttp', 'localData', '$stateParams', 'sAlert'];
+    function AuserEditController($state, myHttp, localData, $stateParams, sAlert) {
         var vm = this;
 
         vm.userInfo = localData.get('user_info');
@@ -67,7 +67,7 @@
             };
             var promise = myHttp.post(postData);
             if (promise) {
-                myHttp.handlePromise(promise, _onsuccess, _onerror);
+                myHttp.handlePromise(promise, _onsuccess);
             }
 
             function _onsuccess() {
@@ -75,10 +75,6 @@
                     function() {
                     $state.go('app.auser.list');
                 });
-            }
-
-            function _onerror(data) {
-                SweetAlert.error('操作失败：'+data, '');
             }
         }
     }

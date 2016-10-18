@@ -6,9 +6,9 @@
     angular
         .module('naut')
         .controller('AUserListController', auserListController);
-    auserListController.$inject = ['$rootScope', 'NgTableParams', '$filter', '$state', 'myHttp', 'localData', 'sAlert'];
+    auserListController.$inject = ['NgTableParams', '$filter', '$state', 'myHttp', 'localData', 'sAlert'];
 
-    function auserListController($rootScope, NgTableParams, $filter, $state, myHttp, localData, sAlert) {
+    function auserListController(NgTableParams, $filter, $state, myHttp, localData, sAlert) {
         var vm = this;
         vm.ausers = [];
         vm.userInfo = localData.get('user_info');
@@ -72,7 +72,7 @@
                 promise = _suspend(auser);
             }
             if (promise) {
-                myHttp.handlePromise(promise, _onsuccess, _onerror);
+                myHttp.handlePromise(promise, _onsuccess);
             }
 
             //{"msg”:"userEdit",
