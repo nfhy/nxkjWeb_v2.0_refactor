@@ -100,7 +100,7 @@
                         onerror(data);
                     }
                     else {
-                        SweetAlert.error('出错了：' + data, "");
+                        sAlert.error('出错了：' + data, "");
                     }
                 });
 

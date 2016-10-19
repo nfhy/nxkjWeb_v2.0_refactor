@@ -25,8 +25,6 @@
         //登录
         function _login() {
             if (vm.isLoading) return;//防止多次点击多次提交
-            /*var promise = $rootScope.promiseTracker.createPromise();
-            $rootScope.pendingPromises['login-success'] = promise;*/
             vm.isLoading = true;
             vm.isError = false;
             vm.errorMsg = '';
@@ -91,10 +89,6 @@
             vm.isLoading = false;
             vm.isError = true;
             vm.errorMsg = data;
-            var promise = $rootScope.pendingPromises['login-success'];
-            if (promise) {
-                promise.resolve();
-            }
         }
 
         function onerror(data) {
@@ -102,10 +96,6 @@
             vm.isLoading = false;
             vm.isError = true;
             vm.errorMsg = '出错了...';
-            var promise = $rootScope.pendingPromises['login-success'];
-            if (promise) {
-                promise.resolve();
-            }
         }
     }
 })();
