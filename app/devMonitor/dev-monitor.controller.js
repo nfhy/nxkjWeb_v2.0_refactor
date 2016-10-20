@@ -65,7 +65,9 @@
 
         function _onsuccess(data) {
             _handleData(data);
-            vm.tableParams.reload();
+            vm.datasToShow = vm.datasToShow||[];
+            if (vm.datasToShow.length >= 1)
+                vm.tableParams.reload();
             if (vm.looping) {
                 vm.looping = false;
             }
@@ -88,7 +90,7 @@
                     var fieldResult = result[i];
                     var fieldIndex = fieldResult.fieldIndex;
                     var field = localData.getFieldByFieldIndex(fieldIndex);
-                    var devList = fieldResult.devList;
+                    var devList = fieldResult.devList || [];
                     for (var j = 0; j <= devList.length - 1; j++) {
                         var dataToShow = {};
                         dataToShow.fieldName = field.fieldName;//园地

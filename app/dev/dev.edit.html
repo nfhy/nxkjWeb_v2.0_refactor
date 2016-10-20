@@ -5,7 +5,7 @@
    <div class="col-md-12">
       <form ng-submit="devEditCtrl.mysubmit()" name="formv" class="form-validate form-horizontal">
          <!-- START panel-->
-         <div class="panel panel-default">
+         <div class="panel panel-info">
             <div class="panel-heading">
                <div class="panel-title">数采仪信息</div>
             </div>
@@ -61,7 +61,7 @@
                         <ui-select ng-model="channelDev.selectedField" theme="bootstrap">
                            <ui-select-match placeholder="选择所属园地...">{{$select.selected.fieldName}}</ui-select-match>
                            <ui-select-choices repeat="field in devEditCtrl.fields">
-                              <div ng-bind-html="field.fieldName | highlight: $select.search"></div>
+                              <div ng-bind-html="devEditCtrl.trustAsHtml((field.fieldName | highlight: $select.search))"></div>
                               <small>{{field.name}}
                               </small>
                            </ui-select-choices>
@@ -69,7 +69,7 @@
                         <ui-select  ng-model="channelDev.selectedDevType" theme="bootstrap">
                            <ui-select-match placeholder="选择设备类型...">{{$select.selected.devTypeName + '(' + $select.selected.paramName + ')'}}</ui-select-match>
                            <ui-select-choices repeat="devType in devEditCtrl.devTypes">
-                              <div ng-bind-html="devType.devTypeName | highlight: $select.search"></div>
+                              <div ng-bind-html="devEditCtrl.trustAsHtml((devType.devTypeName | highlight: $select.search))"></div>
                               <small>{{devType.devTypeName + devType.paramName}}
                               </small>
                            </ui-select-choices>

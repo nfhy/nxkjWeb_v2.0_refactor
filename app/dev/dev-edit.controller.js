@@ -10,8 +10,8 @@
         .module('naut')
         .controller('DevEditController', DeviceEditController);
     /* @ngInject */
-    DeviceEditController.$inject = ['$state', 'myHttp', 'localData', '$stateParams', 'sAlert'];
-    function DeviceEditController( $state, myHttp, localData, $stateParams, sAlert) {
+    DeviceEditController.$inject = ['$state', 'myHttp', 'localData', '$stateParams', '$sce', 'sAlert'];
+    function DeviceEditController( $state, myHttp, localData, $stateParams, $sce, sAlert) {
         var vm = this;
         vm.dev = {};
         vm.userInfo = localData.get('user_info');
@@ -147,5 +147,9 @@
                 $state.go('app.dev.list');
             });
         }
+
+        vm.trustAsHtml = function(value) {
+            return $sce.trustAsHtml(value);
+        };
     }
 })();

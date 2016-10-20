@@ -17,5 +17,11 @@ angular
         'ui.router',
         'oc.lazyLoad',
         'ng-sweet-alert',
-        'cgBusy'
+        'cgBusy',
+        'ngTable',
+        'ngTableExport',
+        'ui.select',
+        'ngSanitize',
+        'ngTouch',
+        'vr.directives.slider'
     ]);

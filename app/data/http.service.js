@@ -13,7 +13,8 @@
     function myHttp($http, $timeout, $state, localData, sAlert) {
         var myhttp = this;
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-        var url = 'http://localhost:8080/nxkj/input.do';
+        //var url = 'http://localhost:8080/nxkj/input.do';
+        var url = '../input.do';
         var httpResCode = {
             '100001' : '系统未知错误',
             '100002' : '用户名已注册',

@@ -9,6 +9,7 @@
         .module('naut')
         .constant('VENDOR_ASSETS', {
             // jQuery based and standalone scripts
+            /*
             scripts: {
                 'animate':            ['vendor/animate.css/animate.min.css'],
                 'icons':              ['vendor/font-awesome/css/font-awesome.min.css',
@@ -24,7 +25,7 @@
                                                     'vendor/angular-ui-calendar/src/calendar.js']},
                 {name: 'ui.select',                 files: ['vendor/angular-ui-select/dist/select.js',
                                                             'vendor/angular-ui-select/dist/select.css']}
-            ]
+            ]*/
 
         });
 

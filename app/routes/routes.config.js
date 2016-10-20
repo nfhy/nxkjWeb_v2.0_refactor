@@ -25,14 +25,14 @@
                 abstract: true,
                 templateUrl: Route.base('app.html'),
                 resolve: {
-                    _assets: Route.require('icons', 'animate')//, 'screenfull', 'sparklines', 'slimscroll',
+                //    _assets: Route.require('icons', 'animate')//, 'screenfull', 'sparklines', 'slimscroll',
                 }
             })
             .state('login', {
                 url: '/login',
                 templateUrl: "app/login/login.html",
                 resolve: {
-                    assets: Route.require('icons', 'animate')
+                //    assets: Route.require('icons', 'animate')
                 }
             })
             .state('login.login', {
@@ -58,7 +58,7 @@
                 controllerAs : 'userListCtrl',
                 templateUrl : 'app/adminUser/auser.list.html',
                 resolve: {
-                    assets: Route.require('ngTable', 'ngTableExport')
+            //        assets: Route.require('ngTable', 'ngTableExport')
                 }
             })
             .state('app.auser.edit',{
@@ -67,7 +67,7 @@
                 controllerAs : 'userEditCtrl',
                 templateUrl : 'app/adminUser/auser.edit.html',
                 resolve: {
-                    assets: Route.require('ui.select')
+            //        assets: Route.require('ui.select')
                 }
             })
 
@@ -82,7 +82,7 @@
                 controllerAs : 'fieldListCtrl',
                 templateUrl : 'app/field/field.list.html',
                 resolve: {
-                    assets: Route.require('ngTable', 'ngTableExport')
+            //        assets: Route.require('ngTable', 'ngTableExport')
                 }
             })
             .state('app.field.edit',{
@@ -103,7 +103,7 @@
                 controllerAs : 'devListCtrl',
                 templateUrl : 'app/dev/dev.list.html',
                 resolve: {
-                    assets: Route.require('ngTable', 'ngTableExport')
+            //        assets: Route.require('ngTable', 'ngTableExport')
                 }
             })
             .state('app.dev.edit',{
@@ -112,7 +112,7 @@
                 controllerAs : 'devEditCtrl',
                 templateUrl : 'app/dev/dev.edit.html',
                 resolve: {
-                    assets: Route.require('ui.select')
+            //        assets: Route.require('ui.select')
                 }
             })
             .state('app.dev.monitor',{
@@ -121,7 +121,7 @@
                 controllerAs : 'devMonitorCtrl',
                 templateUrl : 'app/devMonitor/dev.monitor.html',
                 resolve: {
-                    assets: Route.require('ngTable', 'ngTableExport')
+            //        assets: Route.require('ngTable', 'ngTableExport')
                 }
             })
             .state('app.dev.chart',{
@@ -130,7 +130,7 @@
                 controllerAs : 'devChartCtrl',
                 templateUrl : 'app/devChart/dev.chart.html',
                 resolve: {
-                    assets: Route.require('ngTable', 'ngTableExport')
+            //        assets: Route.require('ngTable', 'ngTableExport')
                 }
             })
             .state('app.dev.chartSetting',{
@@ -139,7 +139,7 @@
                 controllerAs : 'chartSettingCtrl',
                 templateUrl : 'app/devChart/dev.chart.setting.html',
                 resolve: {
-                    assets: Route.require('ngTable', 'ngTableExport')
+            //        assets: Route.require('ngTable', 'ngTableExport')
                 }
             });
     }
