@@ -19,15 +19,35 @@
         };
 
         vm.logout = function() {
-            SweetAlert.confirm('确定要退出系统吗？', {
-                title: '',
-                confirmButtonText: '确认',
-                cancelButtonText: '取消'
-            })
-                .then(function() {
-                    localData.flush();
-                    $state.go('login.login');
-                });
+            // SweetAlert.confirm('确定要退出系统吗？', {
+            //     title: '',
+            //     confirmButtonText: '确认',
+            //     cancelButtonText: '取消'
+            // })
+            //     .then(function(s) {
+            //         alert(1);
+            //     },
+            //     function(e) {
+            //         alert(2);
+            //     });
+            swal({
+                title: "",
+                text: "确定要登出系统吗",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "登出",
+                cancelButtonText: "取消",
+                closeOnConfirm: true,
+                closeOnCancel: true
+            },
+                function(isConfirm){
+                    if (isConfirm) {
+                        localData.flush();
+                        $state.go('login.login');
+                    } else {
+                    }
+            });
         };
 
         // Adjustment on route changes
