@@ -28,13 +28,16 @@
                     <td title="'操作'">
                         <div ng-show="!rowform.$visible" class="buttons">
                             <button ng-click="userListCtrl.editUser(auser)" title="编辑用户" class="btn btn-sm btn-info">
-                                <em class="fa fa-pencil"></em>
+                                编辑
+                            </button>
+                            <button ng-click="userListCtrl.resetPwd(auser)" title="重置密码" class="btn btn-sm btn-warning">
+                                重置密码
                             </button>
                             <button ng-click="userListCtrl.suspendOrResume(auser)" ng-if="auser.enable==1" title="停用用户" ng-show="auser.role!=3" class="btn btn-sm btn-danger">
-                                <em class="fa fa-thumbs-o-down"></em>
+                                停用
                             </button>
                             <button ng-click="userListCtrl.suspendOrResume(auser)" ng-if="auser.enable==0" title="启用用户" ng-show="auser.role!=3" class="btn btn-sm btn-success">
-                                <em class="fa fa-thumbs-o-up"></em>
+                                启用
                             </button>
                         </div>
                     </td>
