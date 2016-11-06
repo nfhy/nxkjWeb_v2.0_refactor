@@ -812,7 +812,7 @@ body {
   /*width: 0%;*/
   padding-bottom: 50px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   background-color: inherit;
 }
@@ -4749,7 +4749,7 @@ fieldset[disabled] .btn-orange.active {
 }
 .panel .table {
   margin-bottom: 0;
-  border: 0;
+  /*border: 0;*/
 }
 .panel-flat {
   margin: 0 !important;

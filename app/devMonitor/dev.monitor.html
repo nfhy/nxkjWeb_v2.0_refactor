@@ -25,17 +25,17 @@
             <td title="'设备类型'" sortable="'devTypeName'" filter="{'devTypeName' : 'text'}">
                 {{dataToShow.devTypeName}}
             </td>
-            <td title="'读数'" sortable="'val'">
+            <td title="'最新读数'" sortable="'val'">
                 <span ng-if="dataToShow.warn" class="bg-danger">{{dataToShow.val}}</span>
                 <span ng-if="!dataToShow.warn" class="bg-success">{{dataToShow.val}}</span>
             </td>
-            <td title="'日期'" sortable="'time'">
+            <td title="'数据日期'" sortable="'time'">
                 {{dataToShow.time}}
             </td>
             <td title="'操作'">
                 <div ng-show="!rowform.$visible" class="buttons">
                     <button ng-click="devMonitorCtrl.showChart(dataToShow)" class="btn btn-sm btn-info">
-                        <em class="fa fa-bar-chart-o"></em>
+                        历史数据
                     </button>
                 </div>
             </td>
