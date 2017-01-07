@@ -1,5 +1,5 @@
-<div class="app-view-header">园地维护
-   <small>修改、删除、新增园地</small>
+<div class="app-view-header">油箱维护
+   <small>修改、删除、新增油箱</small>
 </div>
 <!-- START row-->
 <div class="row">
@@ -8,14 +8,14 @@
          <!-- START panel-->
          <div class="panel panel-info">
             <div class="panel-heading">
-               <div class="panel-title">园地信息</div>
+               <div class="panel-title">油箱信息</div>
             </div>
             <div class="panel-body">
                <fieldset>
                   <div class="form-group">
-                     <label class="col-sm-2 control-label">园地名</label>
+                     <label class="col-sm-2 control-label">油箱名</label>
                      <div class="col-sm-6">
-                        <input type="text" placeholder="请输入园地名" required="" ng-model="fieldEditCtrl.field.fieldName" class="form-control" />
+                        <input type="text" placeholder="请输入油箱名" required="" ng-model="fieldEditCtrl.field.fieldName" class="form-control" />
                      </div>
                      <div class="col-sm-4">
                         <code>必填</code>
@@ -24,9 +24,9 @@
                </fieldset>
                <fieldset>
                   <div class="form-group">
-                     <label class="col-sm-2 control-label">园地描述</label>
+                     <label class="col-sm-2 control-label">油箱描述</label>
                      <div class="col-sm-6">
-                        <input type="text" placeholder="请输入园地描述" required="" ng-model="fieldEditCtrl.field.fieldDesc" class="form-control" />
+                        <input type="text" placeholder="请输入油箱描述" required="" ng-model="fieldEditCtrl.field.fieldDesc" class="form-control" />
                      </div>
                      <div class="col-sm-4">
                         <code>必填</code>
@@ -36,7 +36,7 @@
 
                <fieldset ng-repeat="devInfo in fieldEditCtrl.devList">
                   <div class="form-group">
-                     <label class="col-sm-2 control-label">{{devInfo.devName}}</label>
+                     <label class="col-sm-2 control-label">{{devInfo.devTypeName}}标准值</label>
                      <div class="col-sm-6">
                         <slider ng-model="devInfo.min" ng-model-range="devInfo.max"
                                 precision="2"

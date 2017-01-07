@@ -1,10 +1,10 @@
-<div class="app-view-header">园地管理
-   <small>修改、新增园地</small>
+<div class="app-view-header">油箱管理
+   <small>修改、新增油箱</small>
 </div>
 <div class="container-fluid">
    <div class="panel panel-info">
       <div class="panel-heading"><br/>
-         <button class="btn btn-info" ng-hide="role!=3" ng-click="fieldListCtrl.addField()">新增园地</button>
+         <button class="btn btn-info" ng-hide="role!=3" ng-click="fieldListCtrl.addField()">新增油箱</button>
       </div>
 
       <div class="panel-body">
@@ -13,7 +13,7 @@
                <td title="'编号'" sortable="'fieldIndex'">
                   {{field.fieldIndex}}
                </td>
-               <td title="'园地名称'" filter="{ 'fieldName' : 'text'}" sortable="'fieldName'">
+               <td title="'油箱名称'" filter="{ 'fieldName' : 'text'}" sortable="'fieldName'">
                   {{field.fieldName}}
                </td>
                <td title="'说明'" filter="{ 'fieldDesc' : 'text'}" >

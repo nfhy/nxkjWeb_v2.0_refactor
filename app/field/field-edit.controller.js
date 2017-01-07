@@ -36,7 +36,7 @@
             }*/
             vm.field = localData.getFieldByFieldIndex(fieldIndex);
             if (!vm.field) {
-                sAlert.error('要修改的园地不存在，请返回重新选择','')
+                sAlert.error('要修改的油箱不存在，请返回重新选择','')
                     .then(function() {
                         $state.go('app.field.list');
                     });
@@ -46,7 +46,7 @@
 
         vm.mysubmit = _submit;
 
-        /*园地信息
+        /*油箱信息
          * {"fieldIndex":1,"fieldName":"甲鱼塘1","fieldDesc":"区域1描述",
          "devList":[{"devIndex":100100,"devName":"设备1","devTpeIndex":4,"min":5.0,"max":8.0 },
          {"devIndex":100101, "devName":"设备2","devTypeIndex":4,"min":5.0,"max":8.0 }]}
@@ -106,7 +106,7 @@
             // ”data”:
             // {"fieldIndex":1,"fieldName":"甲鱼塘1",”fieldDesc”:”区域描述”, ”userName”:”zhenglei”, ”token”:”zhenglei”,
             // "devList":[{"devIndex":10100,”min”:5.5,”max”:8.0 },{"devIndex":10101,”min”:5.5,”max”:8.0 }]}}
-            //修改或新增园地
+            //修改或新增油箱
             function _editSubmit() {
                 vm.field.userName = vm.userInfo.username;
                 vm.field.token = vm.userInfo.token;

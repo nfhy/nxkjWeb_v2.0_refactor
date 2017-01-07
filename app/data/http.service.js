@@ -13,7 +13,8 @@
     function myHttp($http, $timeout, $state, localData, sAlert) {
         var myhttp = this;
         $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-        var url = 'http://localhost:8080/nxkj/input.do';
+        //var url = 'http://localhost:8080/nxkj/input.do';
+        var url = 'http://www.sznxkj.cn:8080/nxkj/input.do';
         //var url = '../input.do';
         var httpResCode = {
             '100001' : '系统未知错误',
@@ -29,7 +30,7 @@
             '100011' : '没有找到此命令',
             '100012' : '用户停用，无法登陆',
             '100013' : '会话超时，请重新登录',
-            '100014' : '园地不存在',
+            '100014' : '油箱不存在',
             '100015' : '越权操作',
             '100016' : '旧密码错误'//修改密码时
         };

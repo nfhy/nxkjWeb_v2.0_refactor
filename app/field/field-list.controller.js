@@ -72,12 +72,12 @@
             }
         }
 
-        //跳转修改园地
+        //跳转修改油箱
         function _editField(field) {
             $state.go('app.field.edit' , {fieldIndex : field.fieldIndex});
         }
 
-        //跳转新增园地
+        //跳转新增油箱
         function _addField() {
             $state.go('app.field.edit' , {fieldIndex : -1});
         }

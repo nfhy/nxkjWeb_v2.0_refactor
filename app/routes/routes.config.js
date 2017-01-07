@@ -67,11 +67,20 @@
                 controllerAs : 'userEditCtrl',
                 templateUrl : 'app/adminUser/auser.edit.html',
                 resolve: {
-            //        assets: Route.require('ui.select')
+                    //        assets: Route.require('ui.select')
+                }
+            })
+            .state('app.auser.changePwd',{
+                url : '/changePwd',
+                controller : 'AUserChangePwdController',
+                controllerAs : 'changePwdCtrl',
+                templateUrl : 'app/adminUser/auser.changepwd.html',
+                resolve: {
+                    //        assets: Route.require('ui.select')
                 }
             })
 
-            //园地信息
+            //油箱信息
             .state('app.field', {
                 url : '/field',
                 template : '<div ui-view ng-class="app.views.animation"></div>'

@@ -47,10 +47,10 @@
 
                     <fieldset>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">园地关联</label>
+                            <label class="col-sm-2 control-label">油箱关联</label>
                             <div class="col-sm-6">
                                 <ui-select multiple="" ng-model="userEditCtrl.selectedFields" theme="bootstrap">
-                                    <ui-select-match placeholder="选择关联园地">{{$item.fieldName}}</ui-select-match>
+                                    <ui-select-match placeholder="选择关联油箱">{{$item.fieldName}}</ui-select-match>
                                     <ui-select-choices repeat="field in userEditCtrl.fields">{{field.fieldName}}</ui-select-choices>
                                 </ui-select>
                             </div>

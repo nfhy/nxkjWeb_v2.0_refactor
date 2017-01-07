@@ -93,7 +93,7 @@
                     var devList = fieldResult.devList || [];
                     for (var j = 0; j <= devList.length - 1; j++) {
                         var dataToShow = {};
-                        dataToShow.fieldName = field.fieldName;//园地
+                        dataToShow.fieldName = field.fieldName;//油箱
                         var devResult = devList[j];
                         var channelDevIndex = devResult.devIndex;
                         var mydevice = localData.getMyDeviceByDevIndex(channelDevIndex);

@@ -59,7 +59,7 @@
                      <label class="col-sm-2 col-md-2 control-label">通道{{channelDev.devIndex}}</label>
                      <div class="col-md-8 col-sm-8">
                         <ui-select ng-model="channelDev.selectedField" theme="bootstrap">
-                           <ui-select-match placeholder="选择所属园地...">{{$select.selected.fieldName}}</ui-select-match>
+                           <ui-select-match placeholder="选择所属油箱...">{{$select.selected.fieldName}}</ui-select-match>
                            <ui-select-choices repeat="field in devEditCtrl.fields">
                               <div ng-bind-html="devEditCtrl.trustAsHtml((field.fieldName | highlight: $select.search))"></div>
                               <small>{{field.name}}
